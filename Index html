@@ -1,1 +1,50 @@
-# Nandkumar-fetwale-
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>नंदकुमार फेटेवाले - पारंपारिक फेटे व पगडी</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>नंदकुमार फेटेवाले</h1>
+      <p>भव्य व राजेशाही फेट्यांचे विश्वासू ठिकाण</p>
+    </div>
+  </header>
+
+  <!-- Banner / About -->
+  <section class="hero">
+    <h2>आमच्याकडे लग्नसराई, सण-उत्सव आणि कार्यक्रमांसाठी उत्कृष्ट फेटे मिळतील!</h2>
+    <p>शाही फेटे, पुणेरी पगडी, मावळा पगडी आणि बरंच काही...</p>
+    <a href="#products" class="btn">उत्पादने पहा</a>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section" id="products">
+    <h2 class="section-title">आमची उत्पादने</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- उत्पादने JavaScript द्वारे आपोआप येथे लोड होतील -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <footer class="footer">
+    <h3>संपर्क व पत्ता</h3>
+    <p><i class="fas fa-map-marker-alt"></i> आमचे दुकान: मुख्य बाजारपेठ</p>
+    <p><i class="fas fa-phone"></i> मोबाईल: +91 98XXXXXXXX</p>
+    <div class="social-links">
+      <a href="https://wa.me/9198XXXXXXXX" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> थेट WhatsApp वर संपर्क साधा
+      </a>
+    </div>
+    <p class="copyright">© 2024 नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
