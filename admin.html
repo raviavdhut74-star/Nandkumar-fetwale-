@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>नंदकुमार फेटेवाले - ॲडमिन पॅनेल</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-box {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .admin-form input, .admin-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .admin-form button {
+      background: #b71c1c;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .admin-form button:hover {
+      background: #d32f2f;
+    }
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .del-btn {
+      background: #e53935;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>नंदकुमार फेटेवाले</h1>
+    <p>ॲडमिन कंट्रोल पॅनेल</p>
+  </header>
+
+  <div class="admin-box" id="loginBox">
+    <h3>ॲडमिन लॉगिन</h3>
+    <input type="password" id="adminPass" placeholder="पासवर्ड टाका">
+    <button onclick="login()">लॉगिन करा</button>
+  </div>
+
+  <div class="admin-box" id="panelBox" style="display: none;">
+    <h3>नवीन फेटा / किंमत जोडा</h3>
+    <div class="admin-form">
+      <input type="text" id="photoName" placeholder="फोटोचे नाव (उदा. shahi-maroon.jpg)">
+      <input type="text" id="itemName" placeholder="फेट्याचे नाव (रिकामे ठेवल्यास आपोआप तयार होईल)">
+      <input type="text" id="itemPrice" placeholder="किंमत (उदा. ₹५०० / ऑर्डरनुसार)">
+      <button onclick="addProduct()">वेबसाइटवर जोडा</button>
+    </div>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>सध्या वेबसाइटवर असलेले फेटे</h3>
+    <div id="adminItemsList"></div>
+
+    <button onclick="resetDefaults()" style="background: #555; margin-top: 15px;">मूळ फेटे रीसेट करा</button>
+  </div>
+
+  <script>
+    const ADMIN_KEY = "1234"; // तुमचा पासवर्ड (तुम्ही बदलू शकता)
+
+    function login() {
+      const pass = document.getElementById("adminPass").value;
+      if (pass === ADMIN_KEY) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("panelBox").style.display = "block";
+        loadAdminItems();
+      } else {
+        alert("चुकीचा पासवर्ड!");
+      }
+    }
+
+    function autoNameFromFilename(filename) {
+      let name = filename.replace(/\.[^/.]+$/, ""); // extension काढणे
+      name = name.replace(/[-_]/g, " "); // dash चे स्पेस करणे
+      return "शाही फेटा - " + name;
+    }
+
+    function getProducts() {
+      const saved = localStorage.getItem("nk_products");
+      if (saved) return JSON.parse(saved);
+      return [
+        { name: "शाही मखमली पगडी (ब्रोच व कलगी)", price: "ऑर्डरनुसार", image: "shahi-maroon.jpg" },
+        { name: "राजेशाही लाल जरी फेटा", price: "ऑर्डरनुसार", image: "shahi-red.jpg" },
+        { name: "नवरदेव स्पेशल पांढरा फेटा", price: "मेकअप व फेटा बांधणीसह", image: "shahi-white.jpg" },
+        { name: "पारंपारिक मावळा पगडी", price: "उत्कृष्ट दर", image: "mavala-bhagwa.jpg" },
+        { name: "शाही पिवळा जरी फेटा", price: "शुभकार्यासाठी", image: "shahi-yellow.jpg" },
+        { name: "नवरदेव शाही फेटा कलेक्शन", price: "विविध रंग उपलब्ध", image: "feta-combo.jpg" }
+      ];
+    }
+
+    function loadAdminItems() {
+      const list = document.getElementById("adminItemsList");
+      list.innerHTML = "";
+      const products = getProducts();
+      products.forEach((p, idx) => {
+        const row = document.createElement("div");
+        row.className = "item-row";
+        row.innerHTML = `
+          <div>
+            <strong>${p.name}</strong><br>
+            <small>किंमत: ${p.price} | फोटो: ${p.image}</small>
+          </div>
+          <button class="del-btn" onclick="deleteItem(${idx})">हटवा</button>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    function addProduct() {
+      const photo = document.getElementById("photoName").value.trim();
+      let name = document.getElementById("itemName").value.trim();
+      const price = document.getElementById("itemPrice").value.trim() || "ऑर्डरनुसार";
+
+      if (!photo) {
+        alert("कृपया फोटोचे नाव टाका!");
+        return;
+      }
+
+      if (!name) {
+        name = autoNameFromFilename(photo);
+      }
+
+      const products = getProducts();
+      products.unshift({ name, price, image: photo });
+      localStorage.setItem("nk_products", JSON.stringify(products));
+
+      document.getElementById("photoName").value = "";
+      document.getElementById("itemName").value = "";
+      document.getElementById("itemPrice").value = "";
+
+      alert("फेटा यशस्वीरीत्या जोडला गेला!");
+      loadAdminItems();
+    }
+
+    function deleteItem(index) {
+      if (confirm("हा फेटा खरोखर हटवायचा आहे का?")) {
+        const products = getProducts();
+        products.splice(index, 1);
+        localStorage.setItem("nk_products", JSON.stringify(products));
+        loadAdminItems();
+      }
+    }
+
+    function resetDefaults() {
+      if (confirm("सर्व बदल काढून मूळ यादी परत आणायची आहे का?")) {
+        localStorage.removeItem("nk_products");
+        loadAdminItems();
+      }
+    }
+  </script>
+</body>
+</html>
