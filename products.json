@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Shahi Makhmali Pagdi (Brooch & Kalgi)",
+    "price": "Rs. 850",
+    "image": "shahi-maroon.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Rajeshahi Lal Jari Feta",
+    "price": "Rs. 650",
+    "image": "shahi-red.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Navardev Special Pandhra Feta (Moti Work)",
+    "price": "Rs. 950",
+    "image": "shahi-white.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Paramparik Mavala Pagdi (Bhagwa)",
+    "price": "Rs. 500",
+    "image": "mavala-bhagwa.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Shahi Pivla Jari Feta",
+    "price": "Rs. 550",
+    "image": "shahi-yellow.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Navardev Shahi Feta Collection",
+    "price": "Ordernusar",
+    "image": "feta-combo.jpg"
+  }
+]
