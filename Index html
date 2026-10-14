@@ -5,7 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>नंदकुमार फेटेवाले - पारंपारिक फेटे व पगडी</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>नंदकुमार फेटेवाले | घोडा, कळमनुरी</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>नंदकुमार फेटेवाले</h1>
+      <p class="tagline">शाही व पारंपारिक फेटे आणि नवरदेव स्पेशल मेकअप</p>
+      <p class="owner">प्रो.प्रा. गायकवाड | 📍 घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+    </div>
+    <div class="quick-call">
+      <a href="tel:9766114461" class="call-btn"><i class="fas fa-phone-alt"></i> 9766114461</a>
+      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेट्याबद्दल%20चौकशी%20करायची%20आहे." target="_blank" class="wa-top-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="hero">
+    <h2>लग्नसराई, सण-उत्सव आणि शुभकार्यासाठी फेटे उपलब्ध!</h2>
+    <p>नवरदेवाचा स्पेशल मेकअप व फेटा प्रत्यक्ष जागेवर येऊन बांधून मिळेल.</p>
+    <a href="#products" class="btn-main">आमची उत्पादने पहा</a>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section" id="products">
+    <h2 class="title">आमचे खास फेटे</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- उत्पादने JavaScript द्वारे येथे दिसतील -->
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <footer class="footer">
+    <h3>संपर्क केंद्र</h3>
+    <p><i class="fas fa-map-marker-alt"></i> पत्ता: घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+    <p><i class="fas fa-phone"></i> संपर्क: ९७६६११४४६१ / ९८३४३५१२४७</p>
+    <div class="call-actions">
+      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेटा%20ऑर्डर%20करायचा%20आहे." class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp वर संपर्क करा</a>
+    </div>
+    <p class="copy">© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+">
 </head>
 <body>
 
