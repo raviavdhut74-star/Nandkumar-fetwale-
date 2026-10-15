@@ -134,5 +134,117 @@
     "description": "ऑफ-व्हाइट कपड्यावर मरून सिक्विन वेलव्हेट पट्टी, सोनेरी पंखा, कोयरी ब्रोच आणि मोत्यांची सर असलेला क्लासी फेटा.",
     "price": 0,
     "image": "images/navardev-white-maroon-sequin.jpg"
+  },
+  {
+    "id": 18,
+    "name": "पुढारी प्रिंटेड फेटा - तयार पंख्यासहित (पिस्ता ग्रीन)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "पिस्ता ग्रीन फुलांची प्रिंट, सोनेरी जरी बॉर्डर असलेला तयार पंखा, लग्न व स्वागतासाठी लोकप्रिय फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-ready-sample.jpg"
+  },
+  {
+    "id": 19,
+    "name": "पुढारी प्रिंटेड फेटा - डार्क रेड (Dark Red Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "गडद लाल रंगावर बारीक फुलांची डिझाईन, पाहुणे व वऱ्हाडी मंडळींच्या स्वागतासाठी पारंपरिक फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-dark-red.jpg"
+  },
+  {
+    "id": 20,
+    "name": "पुढारी प्रिंटेड फेटा - क्रीम / बदामी (Cream Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "शांत व देखणा क्रीम / बदामी रंग, नाजूक फ्लोरल प्रिंट, कोणत्याही कपड्यावर शोभून दिसणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-cream.jpg"
+  },
+  {
+    "id": 21,
+    "name": "पुढारी प्रिंटेड फेटा - राणी पिंक (Rani Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "उठावदार राणी गुलाबी रंग, सोनेरी फ्लोरल बुट्टी, लग्नकार्यात खास उठून दिसणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-rani-pink.jpg"
+  },
+  {
+    "id": 22,
+    "name": "पुढारी प्रिंटेड फेटा - बेबी पिंक (Baby Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "फिकट नाजूक गुलाबी रंग, आकर्षक प्रिंट, सत्कार आणि स्वागत समारंभासाठी उत्तम निवड.",
+    "price": 0,
+    "image": "images/pudhari-feta-baby-pink.jpg"
+  },
+  {
+    "id": 23,
+    "name": "पुढारी प्रिंटेड फेटा - लेमन येलो (Bright Yellow Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "चमकदार पिवळा रंग, शुभकार्यासाठी आणि हळदी समारंभासाठी अत्यंत लोकप्रिय फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-yellow.jpg"
+  },
+  {
+    "id": 24,
+    "name": "पुढारी प्रिंटेड फेटा - मस्टर्ड / केशरी पिवळा (Mustard Gold)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "गडद मस्टर्ड पिवळा रंग, पारंपरिक फ्लोरल नक्षी, मंगलकार्यासाठी आकर्षक लूक.",
+    "price": 0,
+    "image": "images/pudhari-feta-mustard.jpg"
+  },
+  {
+    "id": 25,
+    "name": "पुढारी प्रिंटेड फेटा - पीच / केशरी (Peach Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "ट्रेंडी पीच (फिकट केशरी) रंग, नाजूक डिझाईन, पाहुण्यांच्या आदरातिथ्यासाठी खास फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-peach.jpg"
+  },
+  {
+    "id": 26,
+    "name": "पुढारी प्रिंटेड फेटा - लॅव्हेंडर / जांभळट गुलाबी (Lavender Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "युनिक लॅव्हेंडर जांभळट शेड, फ्लोरल प्रिंट, आधुनिक व पारंपरिकतेचा सुरेख संगम.",
+    "price": 0,
+    "image": "images/pudhari-feta-light-purple.jpg"
+  },
+  {
+    "id": 27,
+    "name": "पुढारी प्रिंटेड फेटा - स्काय ब्लू (Sky Blue Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "आकर्षक आकाशी (स्काय ब्लू) रंग, ताजेतवाने लुक देणारी फ्लोरल प्रिंट.",
+    "price": 0,
+    "image": "images/pudhari-feta-sky-blue.jpg"
+  },
+  {
+    "id": 28,
+    "name": "पुढारी प्रिंटेड फेटा - टोमॅटो रेड (Tomato Red Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "उठावदार टोमॅटो रेड रंग, फ्लोरल बुट्टी, राजकीय सत्कार व विवाह सोहळ्यांसाठी उत्तम.",
+    "price": 0,
+    "image": "images/pudhari-feta-red.jpg"
+  },
+  {
+    "id": 29,
+    "name": "पुढारी प्रिंटेड फेटा - मिंट / सी ग्रीन (Mint Green Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "थंड व फ्रेश मिंट ग्रीन रंग, सुबक नक्षी, उन्हाळी व डे-वेडिंगसाठी परफेक्ट फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-mint-green.jpg"
+  },
+  {
+    "id": 30,
+    "name": "पुढारी प्रिंटेड फेटा - रोझ पिंक / मॅजेन्टा (Rose Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "रोझ पिंक शेड, ठळक फ्लोरल प्रिंट, वऱ्हाडी फेट्यांमध्ये नेहमी मागणीत असणारा रंग.",
+    "price": 0,
+    "image": "images/pudhari-feta-rose-pink.jpg"
+  },
+  {
+    "id": 31,
+    "name": "पुढारी प्रिंटेड फेटा - व्हाईट / सिल्व्हर ग्रे (White Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "पांढऱ्या बेसवर रंगीबेरंगी बारीक फुले, प्रतिष्ठित व सोबर लुक देणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-white.jpg"
   }
 ]
