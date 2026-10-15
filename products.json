@@ -70,79 +70,69 @@
     "description": "पारंपरिक कोयरी (कैरी) आकाराचा डिझायनर ब्रोच, नक्षीदार वेलव्हेट लेस आणि व्हाईट-गोल्डन कॉम्बिनेशन.",
     "price": 0,
     "image": "images/navardev-koyari-brooch.jpg"
-  }
-]
-[
-  {
-    "id": 1,
-    "name": "शाही लाल वेलव्हेट फेटा (Royal Red Velvet Feta)",
-    "category": "नवरदेव फेटा",
-    "description": "प्रिमियम रेड वेलव्हेट कापड, सोनेरी जरी बॉर्डर, पांढरा तुरा आणि स्टोन कलगी ब्रोचसह नवरदेवासाठी खास शाही लूक.",
-    "price": 0,
-    "image": "images/navardev-red-velvet.jpg"
   },
   {
-    "id": 2,
-    "name": "रजवाडी मरून व क्रीम फेटा (Rajwadi Maroon & Cream Feta)",
+    "id": 10,
+    "name": "क्रीम व रेड फेटा विथ मॅचिंग उपरणे (Cream & Red Feta with Matching Dupatta)",
     "category": "नवरदेव फेटा",
-    "description": "वाईन मरून वेलव्हेट आणि ऑफ-व्हाईट कॉम्बिनेशन, गोल जरीचा पंखा, मोत्यांची माळ आणि डिझायनर कलगी ब्रोच.",
+    "description": "प्रिमियम क्रीम फॅब्रिक, लाल व सोनेरी नक्षीदार बॉर्डर, शाही कलगी, तुरा आणि सोबत नवरदेवासाठी खास मॅचिंग उपरणे (दुपट्टा).",
     "price": 0,
-    "image": "images/navardev-maroon-rajwadi.jpg"
+    "image": "images/navardev-feta-with-dupatta.jpg"
   },
   {
-    "id": 3,
-    "name": "नवरदेव स्पेशल डिझायनर कलेक्शन (Groom Special Collection)",
+    "id": 11,
+    "name": "शाही रेड सिक्विन वेलव्हेट फेटा (Shahi Red Sequin Velvet Feta)",
     "category": "नवरदेव फेटा",
-    "description": "सिल्व्हर, गोल्डन आणि स्काय-ब्लू शेड्समधील नवरदेवासाठी हाताने तयार केलेले खास डिझायनर फेटे.",
+    "description": "लाल वेलव्हेटवर बारीक सिक्विन वर्क, सोनेरी मोत्यांचा ब्रोच, पांढरा तुरा आणि गोल पंख्यासह रुबाबदार नवरदेव फेटा.",
     "price": 0,
-    "image": "images/navardev-collection-set.jpg"
+    "image": "images/navardev-red-sequin.jpg"
   },
   {
-    "id": 4,
-    "name": "क्लासिक ऑफ-व्हाईट व रेड बॉर्डर फेटा (Classic Off-White & Red Border Feta)",
+    "id": 12,
+    "name": "रॉयल रेड फेटा विथ पिंक तुरा (Royal Red Feta with Pink Plume)",
     "category": "नवरदेव फेटा",
-    "description": "शेरवानीवर खुलून दिसणारा शांत ऑफ-व्हाईट रंग, लाल व सोनेरी सिक्विन बॉर्डर, मोर डिझाईन ब्रोच आणि पांढरा तुरा.",
+    "description": "लाल वेलव्हेट आणि पांढऱ्या कपड्याचे कॉम्बिनेशन, सोनेरी नक्षीकाम, मोत्यांची माळ आणि आकर्षक गुलाबी रंगाचा तुरा.",
     "price": 0,
-    "image": "images/navardev-offwhite-red.jpg"
+    "image": "images/navardev-red-pink-plume.jpg"
   },
   {
-    "id": 5,
-    "name": "रॉयल सिल्व्हर ब्रोकेड फेटा (Royal Silver Brocade Feta)",
+    "id": 13,
+    "name": "सूर्य पंखा रेड व गोल्डन फेटा (Surya Pankha Red & Gold Shahi Feta)",
     "category": "नवरदेव फेटा",
-    "description": "चकचकीत सिल्व्हर ब्रोकेड कापड, वाईन वेलव्हेट बॉर्डरवर जरीकाम, माणिक खडा कलगी आणि मोत्यांची सर.",
+    "description": "सूर्यकिरणांप्रमाणे उठावदार सोनेरी पंखा, लाल वेलव्हेटवर जरीकाम, पांढरा तुरा आणि मध्यभागी रुबाबदार खड्यांची कलगी.",
     "price": 0,
-    "image": "images/navardev-silver-brocade.jpg"
+    "image": "images/navardev-surya-pankha.jpg"
   },
   {
-    "id": 6,
-    "name": "व्हाईट अँड राणी पिंक फेटा (White & Rani Pink Designer Feta)",
+    "id": 14,
+    "name": "राणी पिंक व व्हाईट वेलव्हेट फेटा (Rani Pink & White Velvet Feta)",
     "category": "नवरदेव फेटा",
-    "description": "पांढऱ्या सिल्क ब्रोकेडवर राणी गुलाबी रंगाचा वेलव्हेट पंखा, सोनेरी लेस, पांढरा तुरा आणि आकर्षक ब्रोच.",
+    "description": "आकर्षक राणी गुलाबी वेलव्हेट, मोती बॉर्डर, चौकोनी खड्यांचा ब्रोच, पांढरा तुरा आणि शेरवानीला शोभून दिसणारा रॉयल लूक.",
     "price": 0,
-    "image": "images/navardev-rani-pink.jpg"
+    "image": "images/navardev-rani-white-velvet.jpg"
   },
   {
-    "id": 7,
-    "name": "हेवी रजवाडी मरून वेलव्हेट फेटा (Heavy Rajwadi Maroon Zari Feta)",
+    "id": 15,
+    "name": "रॉयल जांभळा पैठणी सिल्क फेटा (Royal Purple Paithani Silk Feta)",
     "category": "नवरदेव फेटा",
-    "description": "हेवी जरी वर्क, मरून वेलव्हेट, डबल लेयर मोत्यांची माळ आणि रुबाबदार पांढऱ्या तुऱ्यासह परिपूर्ण नवरदेव फेटा.",
+    "description": "पारंपरिक जांभळा (Purple) रंग, पैठणी पद्धतीची सोनेरी जरी बॉर्डर, लाल खड्याचा कोयरी ब्रोच आणि पांढरा तुरा.",
     "price": 0,
-    "image": "images/navardev-heavy-maroon.jpg"
+    "image": "images/navardev-royal-purple.jpg"
   },
   {
-    "id": 8,
-    "name": "लाँग शेमला सिल्क फेटा (Long Shemla Silk Groom Feta)",
+    "id": 16,
+    "name": "पर्ल व्हाईट व सिल्व्हर फेटा (Pearl White & Silver Elegant Feta)",
     "category": "नवरदेव फेटा",
-    "description": "खांद्यावर रुबाबदारपणे सोडण्यासाठी लांब शेमला (पदर), क्रीम सिल्क फॅब्रिक, मरून बॉर्डर आणि शाही ब्रोच.",
+    "description": "संपूर्ण पांढऱ्या व सिल्व्हर शेडमधील सोबर लूक, नाजूक लेस, मोत्यांची दुहेरी माळ आणि सिल्व्हर ब्रोचसह शांत व देखणा फेटा.",
     "price": 0,
-    "image": "images/navardev-long-shemla.jpg"
+    "image": "images/navardev-pearl-white.jpg"
   },
   {
-    "id": 9,
-    "name": "पारंपरिक कोयरी ब्रोच फेटा (Traditional Koyari Brooch Feta)",
+    "id": 17,
+    "name": "व्हाईट व मरून सिक्विन डिझायनर फेटा (White & Maroon Sequin Designer Feta)",
     "category": "नवरदेव फेटा",
-    "description": "पारंपरिक कोयरी (कैरी) आकाराचा डिझायनर ब्रोच, नक्षीदार वेलव्हेट लेस आणि व्हाईट-गोल्डन कॉम्बिनेशन.",
+    "description": "ऑफ-व्हाइट कपड्यावर मरून सिक्विन वेलव्हेट पट्टी, सोनेरी पंखा, कोयरी ब्रोच आणि मोत्यांची सर असलेला क्लासी फेटा.",
     "price": 0,
-    "image": "images/navardev-koyari-brooch.jpg"
+    "image": "images/navardev-white-maroon-sequin.jpg"
   }
 ]
