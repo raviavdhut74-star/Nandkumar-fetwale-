@@ -1,7 +1,7 @@
 let allProducts = [];
 let currentLang = 'mr';
 
-// मराठी, हिंदी आणि इंग्रजी शब्दांचा डिक्शनरी
+// मराठी, हिंदी, इंग्रजी आणि तेलुगू (Telugu) डिक्शनरी
 const i18n = {
   mr: {
     shopTitle: "नंदकुमार फेटेवाले",
@@ -53,6 +53,23 @@ const i18n = {
     orderBtn: "Order on WhatsApp",
     waMsg: "Hello Nandkumar Fetewale,\nI want to order / inquire about this turban:\n\n",
     waFooter: "\nPlease let me know if this is available."
+  },
+  te: {
+    shopTitle: "నందకుమార్ ఫేటేవాలే",
+    tagline: "రాచరిక & సంప్రదాయ ఫేటాలు మరియు పెళ్లికొడుకు స్పెషల్ మేకప్",
+    owner: "ప్రొ. గాయక్వాడ్ | 📍 ఘోడా, తా. కలమ్నూరి, జి. హింగోలి",
+    heroTitle: "వివాహాలు, పండుగలు మరియు శుభకార్యాల కోసం ఫేటాలు లభించును!",
+    heroSub: "పెళ్లికొడుకు స్పెషల్ మేకప్ మరియు ఫేటా నేరుగా వేదిక వద్దకే వచ్చి కట్టబడును.",
+    heroBtn: "మా ఉత్పత్తులను చూడండి",
+    productsTitle: "మా ప్రత్యేక ఫేటాలు",
+    contactTitle: "సంప్రదింపుల కేంద్రం",
+    address: '<i class="fas fa-map-marker-alt"></i> చిరునామా: ఘోడా, తా. కలమ్నూరి, జి. హింగోలి',
+    phoneLabel: "ఫోన్:",
+    waBtn: "WhatsApp లో సంప్రదించండి",
+    copy: "© 2026 నందకుమార్ ఫేటేవాలే. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.",
+    orderBtn: "WhatsApp లో ఆర్డర్ చేయండి",
+    waMsg: "నమస్కారం నందకుమార్ ఫేటేవాలే,\nనేను ఈ ఫేటాను ఆర్డర్ / విచారణ చేయాలనుకుంటున్నాను:\n\n",
+    waFooter: "\nదయచేసి ఇది అందుబాటులో ఉందో లేదో తెలియజేయండి."
   }
 };
 
@@ -94,17 +111,17 @@ function renderProducts() {
     const card = document.createElement("div");
     card.className = "card";
     
-    // फोटोची संपूर्ण लिंक
+    // फोटोची संपूर्ण ऑनलाईन लिंक
     const fullImageUrl = new URL(item.image, window.location.href).href;
 
     // निवडलेल्या भाषेनुसार व्हॉट्सॲप मेसेज
     const messageText = 
 `${t.waMsg}👑 *${item.name}*
-💰 *दर (किंमत):* ₹${item.price}
-📂 *प्रकार:* ${item.category || "फेटा"}
-📝 *माहिती:* ${item.description || ""}
+💰 *दर (కింమత్):* ₹${item.price}
+📂 *రకం:* ${item.category || "ఫేటా"}
+📝 *వివరాలు:* ${item.description || ""}
 
-📸 *फोटो:*
+📸 *ఫోటో:*
 ${fullImageUrl}
 ${t.waFooter}`;
 
