@@ -8,46 +8,51 @@
 body {
   background-color: #fdfaf6;
   color: #333;
-  top: 0px !important; /* Google Translate मुळे जागा सुटू नये म्हणून */
 }
 
-/* --- भाषा निवडणारा बार (Language Bar) --- */
-.language-bar {
+/* --- इन-ॲप भाषा बटन्स (Native Language Bar) --- */
+.lang-bar {
   background: #fff8eb;
-  padding: 8px 12px;
+  padding: 8px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   border-bottom: 1px solid #ffd8a8;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #6d4c41;
   flex-wrap: wrap;
 }
 
-/* Google Translate ड्रॉपडाऊन सुबक दिसण्यासाठी */
-.goog-te-gadget {
-  font-family: inherit !important;
-  color: transparent !important;
-  font-size: 0px !important;
+.lang-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6d4c41;
 }
 
-.goog-te-gadget .goog-te-combo {
-  margin: 0 !important;
-  padding: 5px 10px !important;
-  border-radius: 6px !important;
-  border: 1px solid #d32f2f !important;
-  background-color: #fff !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
-  color: #333 !important;
+.lang-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-btn {
+  background: #ffffff;
+  border: 1.5px solid #b71c1c;
+  color: #b71c1c;
+  padding: 4px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
   cursor: pointer;
-  outline: none;
+  transition: all 0.25s ease;
 }
 
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
+.lang-btn:hover {
+  background: #ffebee;
+}
+
+.lang-btn.active {
+  background: #b71c1c;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(183, 28, 28, 0.3);
 }
 
 /* --- Header --- */
@@ -280,5 +285,13 @@ body {
   }
   .card-info h4 {
     font-size: 0.95rem;
+  }
+  .lang-bar {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+  .lang-btn {
+    padding: 3px 10px;
+    font-size: 0.8rem;
   }
 }
