@@ -9,18 +9,22 @@
 </head>
 <body>
 
-  <!-- भाषा बदलण्याचा बार (Language Switcher) -->
-  <div class="language-bar" style="background: #fff8eb; padding: 6px 12px; display: flex; justify-content: center; align-items: center; gap: 8px; border-bottom: 1px solid #ffd8a8; font-size: 13px;">
-    <span>🌐 भाषा निवडा / Language: </span>
-    <div id="google_translate_element"></div>
+  <!-- इन-ॲप भाषा बदलण्याचे बटन्स -->
+  <div class="lang-bar">
+    <span class="lang-label"><i class="fas fa-globe"></i> भाषा / Language:</span>
+    <div class="lang-buttons">
+      <button class="lang-btn active" id="btn-mr" onclick="setLanguage('mr')">मराठी</button>
+      <button class="lang-btn" id="btn-hi" onclick="setLanguage('hi')">हिंदी</button>
+      <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+    </div>
   </div>
 
   <!-- Header -->
   <header class="header">
     <div class="logo">
-      <h1>नंदकुमार फेटेवाले</h1>
-      <p class="tagline">शाही व पारंपारिक फेटे आणि नवरदेव स्पेशल मेकअप</p>
-      <p class="owner">प्रो.प्रा. गायकवाड | 📍 घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+      <h1 data-i18n="shopTitle">नंदकुमार फेटेवाले</h1>
+      <p class="tagline" data-i18n="tagline">शाही व पारंपारिक फेटे आणि नवरदेव स्पेशल मेकअप</p>
+      <p class="owner" data-i18n="owner">प्रो.प्रा. गायकवाड | 📍 घोडा, ता. कळमनुरी, जि. हिंगोली</p>
     </div>
     <div class="quick-call">
       <a href="tel:9766114461" class="call-btn"><i class="fas fa-phone-alt"></i> 9766114461</a>
@@ -30,14 +34,14 @@
 
   <!-- Banner Section -->
   <section class="hero">
-    <h2>लग्नसराई, सण-उत्सव आणि शुभकार्यासाठी फेटे उपलब्ध!</h2>
-    <p>नवरदेवाचा स्पेशल मेकअप व फेटा प्रत्यक्ष जागेवर येऊन बांधून मिळेल.</p>
-    <a href="#products" class="btn-main">आमची उत्पादने पहा</a>
+    <h2 data-i18n="heroTitle">लग्नसराई, सण-उत्सव आणि शुभकार्यासाठी फेटे उपलब्ध!</h2>
+    <p data-i18n="heroSub">नवरदेवाचा स्पेशल मेकअप व फेटा प्रत्यक्ष जागेवर येऊन बांधून मिळेल.</p>
+    <a href="#products" class="btn-main" data-i18n="heroBtn">आमची उत्पादने पहा</a>
   </section>
 
   <!-- Products Section -->
   <section class="products-section" id="products">
-    <h2 class="title">आमचे खास फेटे</h2>
+    <h2 class="title" data-i18n="productsTitle">आमचे खास फेटे</h2>
     <div class="product-grid" id="productGrid">
       <!-- उत्पादने JavaScript द्वारे येथे दिसतील -->
     </div>
@@ -45,28 +49,17 @@
 
   <!-- Contact & Footer -->
   <footer class="footer">
-    <h3>संपर्क केंद्र</h3>
-    <p><i class="fas fa-map-marker-alt"></i> पत्ता: घोडा, ता. कळमनुरी, जि. हिंगोली</p>
-    <p><i class="fas fa-phone"></i> संपर्क: ९७६६११४४६१ / ९८३४३५१२४७</p>
+    <h3 data-i18n="contactTitle">संपर्क केंद्र</h3>
+    <p id="addressText"><i class="fas fa-map-marker-alt"></i> पत्ता: घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+    <p><i class="fas fa-phone"></i> <span data-i18n="phoneLabel">संपर्क:</span> ९७६६११४४६१ / ९८३४३५१२४७</p>
     <div class="call-actions">
-      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेटा%20ऑर्डर%20करायचा%20आहे." class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp वर संपर्क करा</a>
+      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेटा%20ऑर्डर%20करायचा%20आहे." class="btn-wa">
+        <i class="fab fa-whatsapp"></i> <span data-i18n="waBtn">WhatsApp वर संपर्क करा</span>
+      </a>
     </div>
-    <p class="copy">© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
+    <p class="copy" data-i18n="copy">© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
   </footer>
 
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'mr',
-        includedLanguages: 'mr,en,hi,gu,kn,te',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- मुख्य प्रॉडक्ट्स लोड करणारी स्क्रिप्ट -->
   <script src="script.js"></script>
 </body>
 </html>
