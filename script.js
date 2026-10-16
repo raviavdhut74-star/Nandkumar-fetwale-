@@ -1,5 +1,6 @@
 let allProducts = [];
 let currentLang = 'mr';
+let currentCategory = 'all';
 
 // मराठी, हिंदी, इंग्रजी आणि तेलुगू (Telugu) डिक्शनरी
 const i18n = {
@@ -17,8 +18,13 @@ const i18n = {
     waBtn: "WhatsApp वर संपर्क करा",
     copy: "© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.",
     orderBtn: "WhatsApp वर Order करा",
+    contactPrice: "किंमतीसाठी संपर्क करा",
+    waPriceLabel: "दर",
+    waCatLabel: "प्रकार",
+    waDescLabel: "माहिती",
+    waPhotoLabel: "फोटो",
     waMsg: "नमस्कार नंदकुमार फेटेवाले,\nमला या फेट्याची ऑर्डर / चौकशी करायची आहे:\n\n",
-    waFooter: "\nकृपया हा फेटा उपलब्ध आहे का ते सांगा."
+    waFooter: "\nकृपया हा फेटा उपलब्ध आहे का आणि याची किंमत काय आहे ते सांगा."
   },
   hi: {
     shopTitle: "नंदकुमार फेंटेवाले",
@@ -34,6 +40,11 @@ const i18n = {
     waBtn: "WhatsApp पर संपर्क करें",
     copy: "© २०२६ नंदकुमार फेंटेवाले। सर्वाधिकार सुरक्षित।",
     orderBtn: "WhatsApp पर Order करें",
+    contactPrice: "कीमत के लिए संपर्क करें",
+    waPriceLabel: "कीमत",
+    waCatLabel: "प्रकार",
+    waDescLabel: "विवरण",
+    waPhotoLabel: "फोटो",
     waMsg: "नमस्ते नंदकुमार फेंटेवाले,\nमुझे इस फेंटे का ऑर्डर / पूछताछ करनी है:\n\n",
     waFooter: "\nकृपया बताएं क्या यह उपलब्ध है।"
   },
@@ -51,6 +62,11 @@ const i18n = {
     waBtn: "Contact on WhatsApp",
     copy: "© 2026 Nandkumar Fetewale. All rights reserved.",
     orderBtn: "Order on WhatsApp",
+    contactPrice: "Contact for Price",
+    waPriceLabel: "Price",
+    waCatLabel: "Category",
+    waDescLabel: "Details",
+    waPhotoLabel: "Photo",
     waMsg: "Hello Nandkumar Fetewale,\nI want to order / inquire about this turban:\n\n",
     waFooter: "\nPlease let me know if this is available."
   },
@@ -68,6 +84,11 @@ const i18n = {
     waBtn: "WhatsApp లో సంప్రదించండి",
     copy: "© 2026 నందకుమార్ ఫేటేవాలే. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.",
     orderBtn: "WhatsApp లో ఆర్డర్ చేయండి",
+    contactPrice: "ధర కోసం సంప్రదించండి",
+    waPriceLabel: "ధర",
+    waCatLabel: "రకం",
+    waDescLabel: "వివరాలు",
+    waPhotoLabel: "ఫోటో",
     waMsg: "నమస్కారం నందకుమార్ ఫేటేవాలే,\nనేను ఈ ఫేటాను ఆర్డర్ / విచారణ చేయాలనుకుంటున్నాను:\n\n",
     waFooter: "\nదయచేసి ఇది అందుబాటులో ఉందో లేదో తెలియజేయండి."
   }
@@ -99,7 +120,17 @@ function setLanguage(lang) {
   renderProducts();
 }
 
-// २. फेट्यांचे कार्ड्स आणि व्हॉट्सॲप मेसेज तयार करणे
+// २. कॅटेगरीनुसार फेटे फिल्टर करणे
+function filterFetas(category, btnElement) {
+  currentCategory = category;
+  if (btnElement) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+  }
+  renderProducts();
+}
+
+// ३. फेट्यांचे कार्ड्स आणि व्हॉट्सॲप मेसेज तयार करणे
 function renderProducts() {
   const container = document.getElementById("productGrid");
   if (!container) return;
@@ -107,31 +138,41 @@ function renderProducts() {
 
   const t = i18n[currentLang];
 
-  allProducts.forEach(item => {
+  // निवडलेल्या कॅटेगरीनुसार प्रॉडक्ट्स फिल्टर करणे
+  const filteredProducts = allProducts.filter(item => {
+    if (currentCategory === 'all') return true;
+    return item.category === currentCategory;
+  });
+
+  filteredProducts.forEach(item => {
     const card = document.createElement("div");
     card.className = "card";
+    card.setAttribute("data-category", item.category || "");
     
     // फोटोची संपूर्ण ऑनलाईन लिंक
     const fullImageUrl = new URL(item.image, window.location.href).href;
 
+    // किंमत ० असेल तर "किंमतीसाठी संपर्क करा" दाखवणे
+    const priceDisplay = item.price > 0 ? `₹${item.price}` : t.contactPrice;
+
     // निवडलेल्या भाषेनुसार व्हॉट्सॲप मेसेज
     const messageText = 
 `${t.waMsg}👑 *${item.name}*
-💰 *दर (కింమత్):* ₹${item.price}
-📂 *రకం:* ${item.category || "ఫేటా"}
-📝 *వివరాలు:* ${item.description || ""}
+💰 *${t.waPriceLabel}:* ${priceDisplay}
+📂 *${t.waCatLabel}:* ${item.category || "फेटा"}
+📝 *${t.waDescLabel}:* ${item.description || ""}
 
-📸 *ఫోటో:*
+📸 *${t.waPhotoLabel}:*
 ${fullImageUrl}
 ${t.waFooter}`;
 
     const waLink = `https://wa.me/919766114461?text=${encodeURIComponent(messageText)}`;
 
     card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/300x250?text=Feta+Photo'">
+      <img src="${item.image}" alt="${item.name}" style="cursor: zoom-in;" onerror="this.src='https://via.placeholder.com/300x250?text=Feta+Photo'">
       <div class="card-info">
         <h4>${item.name}</h4>
-        <p class="price">₹${item.price}</p>
+        <p class="price" style="font-size: 14px;">${priceDisplay}</p>
         <a href="${waLink}" target="_blank" class="order-btn">
           <i class="fab fa-whatsapp"></i> ${t.orderBtn}
         </a>
@@ -141,7 +182,7 @@ ${t.waFooter}`;
   });
 }
 
-// ३. प्रॉडक्ट्स लोड करणे
+// ४. प्रॉडक्ट्स लोड करणे
 fetch('products.json')
   .then(response => response.json())
   .then(products => {
