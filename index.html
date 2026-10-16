@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* नवीन फीचर्ससाठी आकर्षक स्टाईल्स */
     .filter-container {
       display: flex;
       justify-content: center;
@@ -31,11 +30,6 @@
       background: #b71c1c;
       color: #fff;
     }
-    .product-card img {
-      cursor: zoom-in;
-    }
-
-    /* आमची वैशिष्ट्ये आणि पॅकेजेस */
     .extra-section {
       padding: 35px 15px;
       text-align: center;
@@ -70,8 +64,6 @@
       font-size: 14px;
       line-height: 1.5;
     }
-
-    /* थेट बुकिंग फॉर्म */
     .booking-box {
       max-width: 480px;
       margin: 20px auto 0;
@@ -118,8 +110,6 @@
     .submit-wa-btn:hover {
       background: #1ebe57;
     }
-
-    /* फोटो झूम (Lightbox) */
     .lightbox-modal {
       display: none;
       position: fixed;
@@ -197,11 +187,11 @@
   <section class="products-section" id="products">
     <h2 class="title" data-i18n="productsTitle">आमचे खास फेटे</h2>
 
-    <!-- नवीन कॅटेगरी फिल्टर बटन्स -->
+    <!-- कॅटेगरी फिल्टर बटन्स -->
     <div class="filter-container">
-      <button class="filter-btn active" onclick="filterFetas('all', this)">सर्व फेटे (All)</button>
-      <button class="filter-btn" onclick="filterFetas('नवरदेव फेटा', this)">नवरदेव फेटा</button>
-      <button class="filter-btn" onclick="filterFetas('पुढारी / वऱ्हाडी फेटा', this)">पुढारी / वऱ्हाडी फेटा</button>
+      <button class="filter-btn active" onclick="filterFetas('all', this)" data-i18n="filterAll">सर्व फेटे (All)</button>
+      <button class="filter-btn" onclick="filterFetas('नवरदेव फेटा', this)" data-i18n="filterGroom">नवरदेव फेटा</button>
+      <button class="filter-btn" onclick="filterFetas('पुढारी / वऱ्हाडी फेटा', this)" data-i18n="filterGuest">पुढारी / वऱ्हाडी फेटा</button>
     </div>
 
     <div class="product-grid" id="productGrid">
@@ -209,82 +199,82 @@
     </div>
   </section>
 
-  <!-- नवीन विभाग १: स्पेशल वेडिंग पॅकेजेस -->
+  <!-- विभाग १: स्पेशल वेडिंग पॅकेजेस -->
   <section class="extra-section" style="background-color: #fff8f0;">
-    <h2 class="title">स्पेशल लग्न पॅकेजेस (Wedding Packages)</h2>
+    <h2 class="title" data-i18n="pkgMainTitle">स्पेशल लग्न पॅकेजेस (Wedding Packages)</h2>
     <div class="extra-grid">
       <div class="info-card">
         <i class="fas fa-crown"></i>
-        <h3>नवरदेव रॉयल पॅकेज</h3>
-        <p>शाही डिझायनर फेटा + मॅचिंग उपरणे + कलगी व तुरा + नवरदेव स्पेशल प्रोफेशनल मेकअप.</p>
+        <h3 data-i18n="pkg1Title">नवरदेव रॉयल पॅकेज</h3>
+        <p data-i18n="pkg1Desc">शाही डिझायनर फेटा + मॅचिंग उपरणे + कलगी व तुरा + नवरदेव स्पेशल प्रोफेशनल मेकअप.</p>
       </div>
       <div class="info-card">
         <i class="fas fa-users"></i>
-        <h3>वऱ्हाडी / पुढारी पॅकेज</h3>
-        <p>लग्न किंवा सत्कार समारंभासाठी ५० ते ५००+ व्हीआयपी पुढारी फेटे लग्नाच्या जागेवर येऊन बांधून मिळतील.</p>
+        <h3 data-i18n="pkg2Title">वऱ्हाडी / पुढारी पॅकेज</h3>
+        <p data-i18n="pkg2Desc">लग्न किंवा सत्कार समारंभासाठी ५० ते ५००+ व्हीआयपी पुढारी फेटे लग्नाच्या जागेवर येऊन बांधून मिळतील.</p>
       </div>
       <div class="info-card">
         <i class="fas fa-magic"></i>
-        <h3>नवरदेव मेकअप सर्विस</h3>
-        <p>हळद, लग्न आणि रिसेप्शनसाठी नवरदेवाचा एचडी (HD) व नॅचरल मेकअप प्रत्यक्ष मंडपात येऊन केला जाईल.</p>
+        <h3 data-i18n="pkg3Title">नवरदेव मेकअप सर्विस</h3>
+        <p data-i18n="pkg3Desc">हळद, लग्न आणि रिसेप्शनसाठी नवरदेवाचा एचडी (HD) व नॅचरल मेकअप प्रत्यक्ष मंडपात येऊन केला जाईल.</p>
       </div>
     </div>
   </section>
 
-  <!-- नवीन विभाग २: आमची वैशिष्ट्ये -->
+  <!-- विभाग २: आमची वैशिष्ट्ये -->
   <section class="extra-section">
-    <h2 class="title">आमची वैशिष्ट्ये (Why Choose Us?)</h2>
+    <h2 class="title" data-i18n="whyMainTitle">आमची वैशिष्ट्ये (Why Choose Us?)</h2>
     <div class="extra-grid">
       <div class="info-card">
         <i class="fas fa-map-marked-alt"></i>
-        <h3>थेट मंडपात सेवा</h3>
-        <p>हिंगोली, नांदेड, परभणी व आसपासच्या परिसरात लग्नाच्या ठिकाणी वेळेवर येऊन फेटे बांधून मिळतील.</p>
+        <h3 data-i18n="why1Title">थेट मंडपात सेवा</h3>
+        <p data-i18n="why1Desc">हिंगोली, नांदेड, परभणी व आसपासच्या परिसरात लग्नाच्या ठिकाणी वेळेवर येऊन फेटे बांधून मिळतील.</p>
       </div>
       <div class="info-card">
         <i class="fas fa-gem"></i>
-        <h3>प्रिमियम व स्वच्छ कापड</h3>
-        <p>उच्च दर्जाचे वेलव्हेट, पैठणी सिल्क, ब्रोकेड कापड आणि आकर्षक पारंपरिक ब्रोच व तुऱ्यांचा वापर.</p>
+        <h3 data-i18n="why2Title">प्रिमियम व स्वच्छ कापड</h3>
+        <p data-i18n="why2Desc">उच्च दर्जाचे वेलव्हेट, पैठणी सिल्क, ब्रोकेड कापड आणि आकर्षक पारंपरिक ब्रोच व तुऱ्यांचा वापर.</p>
       </div>
       <div class="info-card">
         <i class="fas fa-rupee-sign"></i>
-        <h3>योग्य आणि परवडणारे दर</h3>
-        <p>किरकोळ आणि घाऊक ऑर्डरसाठी अत्यंत माफक दर व अनुभवी कारागिरांकडून जलद सेवा.</p>
+        <h3 data-i18n="why3Title">योग्य आणि परवडणारे दर</h3>
+        <p data-i18n="why3Desc">किरकोळ आणि घाऊक ऑर्डरसाठी अत्यंत माफक दर व अनुभवी कारागिरांकडून जलद सेवा.</p>
       </div>
     </div>
   </section>
 
-  <!-- नवीन विभाग ३: झटपट WhatsApp बुकिंग फॉर्म -->
+  <!-- विभाग ३: झटपट WhatsApp बुकिंग फॉर्म -->
   <section class="extra-section" style="background-color: #fdf2f2;">
-    <h2 class="title">झटपट बुकिंग / चौकशी करा</h2>
+    <h2 class="title" data-i18n="bookMainTitle">झटपट बुकिंग / चौकशी करा</h2>
     <div class="booking-box">
       <form onsubmit="sendBookingToWhatsApp(event)">
         <div class="form-group">
-          <label>तुमचे नाव (Your Name):</label>
-          <input type="text" id="custName" placeholder="उदा. राहुल पाटील" required>
+          <label data-i18n="lblName">तुमचे नाव (Your Name):</label>
+          <input type="text" id="custName" placeholder="Name" required>
         </div>
         <div class="form-group">
-          <label>गाव / ठिकाण (Village / City):</label>
-          <input type="text" id="custVillage" placeholder="उदा. कळमनुरी" required>
+          <label data-i18n="lblVillage">गाव / ठिकाण (Village / City):</label>
+          <input type="text" id="custVillage" placeholder="City / Village" required>
         </div>
         <div class="form-group">
-          <label>कार्यक्रमाची तारीख (Event Date):</label>
+          <label data-i18n="lblDate">कार्यक्रमाची तारीख (Event Date):</label>
           <input type="date" id="eventDate" required>
         </div>
         <div class="form-group">
-          <label>कशासाठी ऑर्डर करायची आहे?</label>
+          <label data-i18n="lblService">कशासाठी ऑर्डर करायची आहे?</label>
           <select id="serviceType">
-            <option value="नवरदेव फेटा व मेकअप">नवरदेव फेटा व मेकअप</option>
-            <option value="फक्त नवरदेव फेटा">फक्त नवरदेव फेटा</option>
-            <option value="वऱ्हाडी / पुढारी फेटे (Bulk Order)">वऱ्हाडी / पुढारी फेटे (एकत्रित ऑर्डर)</option>
-            <option value="नवरदेव + वऱ्हाडी फेटे पूर्ण पॅकेज">नवरदेव + वऱ्हाडी फेटे पूर्ण पॅकेज</option>
+            <option value="Groom Feta & Makeup" data-i18n="opt1">नवरदेव फेटा व मेकअप</option>
+            <option value="Only Groom Feta" data-i18n="opt2">फक्त नवरदेव फेटा</option>
+            <option value="Guest / Pudhari Fetas (Bulk)" data-i18n="opt3">वऱ्हाडी / पुढारी फेटे (एकत्रित ऑर्डर)</option>
+            <option value="Full Wedding Package" data-i18n="opt4">नवरदेव + वऱ्हाडी फेटे पूर्ण पॅकेज</option>
           </select>
         </div>
         <div class="form-group">
-          <label>अंदाजे किती फेटे हवे आहेत?</label>
-          <input type="number" id="fetaQty" placeholder="उदा. 1 किंवा 50" min="1" required>
+          <label data-i18n="lblQty">अंदाजे किती फेटे हवे आहेत?</label>
+          <input type="number" id="fetaQty" placeholder="1 / 50 / 100" min="1" required>
         </div>
         <button type="submit" class="submit-wa-btn">
-          <i class="fab fa-whatsapp"></i> WhatsApp वर बुकिंग पाठवा
+          <i class="fab fa-whatsapp"></i> <span data-i18n="bookSubmitBtn">WhatsApp वर बुकिंग पाठवा</span>
         </button>
       </form>
     </div>
@@ -307,82 +297,12 @@
         <i class="fab fa-whatsapp"></i> <span data-i18n="waBtn">WhatsApp वर संपर्क करा</span>
       </a>
       <a href="https://www.google.com/maps/search/?api=1&query=Ghoda+Kalamnuri+Hingoli" target="_blank" class="btn-wa" style="background-color: #d32f2f;">
-        <i class="fas fa-location-arrow"></i> Google Map वर पत्ता पहा
+        <i class="fas fa-location-arrow"></i> <span data-i18n="mapBtn">Google Map वर पत्ता पहा</span>
       </a>
     </div>
     <p class="copy" data-i18n="copy">© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
   </footer>
 
   <script src="script.js"></script>
-
-  <!-- नवीन फीचर्स चालवण्यासाठी अतिरिक्त स्क्रिप्ट -->
-  <script>
-    // १. बुकिंग फॉर्म थेट WhatsApp वर पाठवणे
-    function sendBookingToWhatsApp(event) {
-      event.preventDefault();
-      const name = document.getElementById('custName').value;
-      const village = document.getElementById('custVillage').value;
-      const date = document.getElementById('eventDate').value;
-      const service = document.getElementById('serviceType').value;
-      const qty = document.getElementById('fetaQty').value;
-
-      const msg = `नमस्कार नंदकुमार फेटेवाले,%0Aमला फेट्याची ऑर्डर/चौकशी करायची आहे:%0A%0A*नाव:* ${name}%0A*गाव:* ${village}%0A*तारीख:* ${date}%0A*सेवा:* ${service}%0A*एकूण फेटे:* ${qty}`;
-      window.open(`https://wa.me/919766114461?text=${msg}`, '_blank');
-    }
-
-    // २. कॅटेगरीनुसार फेटे फिल्टर करणे
-    function filterFetas(category, btnElement) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
-
-      // जर तुमच्या script.js मध्ये कार्ड्स तयार झाले असतील तर त्यांना फिल्टर करा
-      const cards = document.querySelectorAll('#productGrid > div');
-      cards.forEach(card => {
-        const cardText = card.innerText || "";
-        const cardCat = card.getAttribute('data-category') || "";
-        if (category === 'all') {
-          card.style.display = '';
-        } else if (cardCat === category || cardText.includes(category)) {
-          card.style.display = '';
-        } else if (category === 'नवरदेव फेटा' && !cardText.includes('पुढारी')) {
-          card.style.display = '';
-        } else if (category === 'पुढारी / वऱ्हाडी फेटा' && cardText.includes('पुढारी')) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // ३. फोटोवर टॅप केल्यावर झूम (Lightbox) उघडणे आणि ₹0 दुरुस्त करणे
-    document.addEventListener('click', function(e) {
-      if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid')) {
-        const modal = document.getElementById('imageLightbox');
-        const modalImg = document.getElementById('lightboxImg');
-        const caption = document.getElementById('lightboxCaption');
-        modal.style.display = 'flex';
-        modalImg.src = e.target.src;
-        caption.innerText = e.target.alt || '';
-      }
-    });
-
-    function closeLightbox() {
-      document.getElementById('imageLightbox').style.display = 'none';
-    }
-
-    // ₹0 च्या ऐवजी आपोआप "किंमतीसाठी संपर्क करा" दाखवणे
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll('#productGrid *').forEach(el => {
-        if (el.children.length === 0 && el.innerText.trim() === '₹0') {
-          el.innerText = 'किंमतीसाठी संपर्क करा';
-          el.style.fontSize = '14px';
-        }
-      });
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('productGrid');
-      if (grid) observer.observe(grid, { childList: true, subtree: true });
-    });
-  </script>
 </body>
 </html>
