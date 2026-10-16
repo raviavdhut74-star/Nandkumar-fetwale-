@@ -128,4 +128,213 @@ const i18n = {
     why1Title: "On-Venue Service",
     why1Desc: "Prompt on-site turban tying service across Hingoli, Nanded, Parbhani, and nearby areas.",
     why2Title: "Premium & Hygienic Fabric",
-    why2Desc: "High-quality Velvet, Paithani Silk
+    why2Desc: "High-quality Velvet, Paithani Silk, Brocade fabrics with royal traditional brooches and plumes.",
+    why3Title: "Affordable Pricing",
+    why3Desc: "Reasonable rates for individual and bulk wedding orders with fast service by expert artists.",
+    bookMainTitle: "Quick Booking / Inquiry",
+    lblName: "Your Name:",
+    lblVillage: "Village / City:",
+    lblDate: "Event Date:",
+    lblService: "Select Service Type:",
+    opt1: "Groom Feta & Makeup",
+    opt2: "Only Groom Feta",
+    opt3: "VIP / Guest Fetas (Bulk Order)",
+    opt4: "Full Wedding Package (Groom + Guests)",
+    lblQty: "Approximate Number of Fetas:",
+    bookSubmitBtn: "Send Booking on WhatsApp",
+    contactTitle: "Contact Us",
+    address: '<i class="fas fa-map-marker-alt"></i> Address: Ghoda, Tal. Kalamnuri, Dist. Hingoli',
+    phoneLabel: "Contact:",
+    waBtn: "Contact on WhatsApp",
+    mapBtn: "View on Google Maps",
+    copy: "© 2026 Nandkumar Fetewale. All rights reserved.",
+    orderBtn: "Order on WhatsApp",
+    contactPrice: "Contact for Price",
+    waPriceLabel: "Price",
+    waCatLabel: "Category",
+    waDescLabel: "Details",
+    waPhotoLabel: "Photo",
+    waMsg: "Hello Nandkumar Fetewale,\nI want to order / inquire about this turban:\n\n",
+    waFooter: "\nPlease let me know if this is available."
+  },
+  te: {
+    shopTitle: "నందకుమార్ ఫేటేవాలే",
+    tagline: "రాచరిక & సంప్రదాయ ఫేటాలు మరియు పెళ్లికొడుకు స్పెషల్ మేకప్",
+    owner: "ప్రొ. గాయక్వాడ్ | 📍 ఘోడా, తా. కలమ్నూరి, జి. హింగోలి",
+    heroTitle: "వివాహాలు, పండుగలు మరియు శుభకార్యాల కోసం ఫేటాలు లభించును!",
+    heroSub: "పెళ్లికొడుకు స్పెషల్ మేకప్ మరియు ఫేటా నేరుగా వేదిక వద్దకే వచ్చి కట్టబడును.",
+    heroBtn: "మా ఉత్పత్తులను చూడండి",
+    productsTitle: "మా ప్రత్యేక ఫేటాలు",
+    filterAll: "అన్ని ఫేటాలు (All)",
+    filterGroom: "పెళ్లికొడుకు ఫేటా",
+    filterGuest: "అతిథుల / బంధువుల ఫేటా",
+    pkgMainTitle: "స్పెషల్ వెడ్డింగ్ ప్యాకేజీలు",
+    pkg1Title: "పెళ్లికొడుకు రాయల్ ప్యాకేజీ",
+    pkg1Desc: "రాయల్ డిజైనర్ ఫేటా + మ్యాచింగ్ దుపట్టా + కల్గి & తురా + పెళ్లికొడుకు ప్రొఫెషనల్ మేకప్.",
+    pkg2Title: "అతిథుల / బంధువుల ప్యాకేజీ",
+    pkg2Desc: "వివాహాలు మరియు సన్మాన కార్యక్రమాల కోసం 50 నుండి 500+ VIP ఫేటాలు మండపం వద్దకు వచ్చి కట్టబడును.",
+    pkg3Title: "పెళ్లికొడుకు మేకప్ సర్వీస్",
+    pkg3Desc: "హల్దీ, పెళ్లి మరియు రిసెప్షన్ కోసం నేరుగా మండపం వద్దే HD & నేచురల్ మేకప్ చేయబడును.",
+    whyMainTitle: "మా ప్రత్యేకతలు (Why Choose Us?)",
+    why1Title: "నేరుగా వేదిక వద్దకే సేవ",
+    why1Desc: "హింగోలి, నాందేడ్, పర్భని మరియు పరిసర ప్రాంతాలలో పెళ్లి మండపం వద్ద సమయానికి సేవ.",
+    why2Title: "ప్రీమియం & శుభ్రమైన వస్త్రం",
+    why2Desc: "అత్యుత్తమ వెల్వెట్, పైఠాణీ సిల్క్, బ్రోకేడ్ వస్త్రాలు మరియు ఆకర్షణీయమైన బ్రోచెస్.",
+    why3Title: "సరసమైన ధరలు",
+    why3Desc: "రిటైల్ మరియు బల్క్ ఆర్డర్ల కోసం తక్కువ ధరలు మరియు నిపుణులచే వేగవంతమైన సేవ.",
+    bookMainTitle: "త్వరిత బుకింగ్ / విచారణ",
+    lblName: "మీ పేరు (Your Name):",
+    lblVillage: "గ్రామం / నగరం (Village / City):",
+    lblDate: "కార్యక్రమం తేదీ (Event Date):",
+    lblService: "దేనికోసం ఆర్డర్ చేయాలి?",
+    opt1: "పెళ్లికొడుకు ఫేటా & మేకప్",
+    opt2: "పెళ్లికొడుకు ఫేటా మాత్రమే",
+    opt3: "అతిథుల ఫేటాలు (బల్క్ ఆర్డర్)",
+    opt4: "పూర్తి వెడ్డింగ్ ప్యాకేజీ",
+    lblQty: "సుమారుగా ఎన్ని ఫేటాలు కావాలి?",
+    bookSubmitBtn: "WhatsApp లో బుకింగ్ పంపండి",
+    contactTitle: "సంప్రదింపుల కేంద్రం",
+    address: '<i class="fas fa-map-marker-alt"></i> చిరునామా: ఘోడా, తా. కలమ్నూరి, జి. హింగోలి',
+    phoneLabel: "ఫోన్:",
+    waBtn: "WhatsApp లో సంప్రదించండి",
+    mapBtn: "Google Map లో చిరునామా చూడండి",
+    copy: "© 2026 నందకుమార్ ఫేటేవాలే. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.",
+    orderBtn: "WhatsApp లో ఆర్డర్ చేయండి",
+    contactPrice: "ధర కోసం సంప్రదించండి",
+    waPriceLabel: "ధర",
+    waCatLabel: "రకం",
+    waDescLabel: "వివరాలు",
+    waPhotoLabel: "ఫోటో",
+    waMsg: "నమస్కారం నందకుమార్ ఫేటేవాలే,\nనేను ఈ ఫేటాను ఆర్డర్ / విచారణ చేయాలనుకుంటున్నాను:\n\n",
+    waFooter: "\nదయచేసి ఇది అందుబాటులో ఉందో లేదో తెలియజేయండి."
+  }
+};
+
+function getLocalizedProductName(name, lang) {
+  if (!name) return "";
+  if (lang === 'en') {
+    const match = name.match(/\(([^)]+)\)/);
+    if (match) return match[1];
+  }
+  return name;
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById(`btn-${lang}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key]) {
+      el.textContent = i18n[lang][key];
+    }
+  });
+
+  const addrEl = document.getElementById('addressText');
+  if (addrEl && i18n[lang]) {
+    addrEl.innerHTML = i18n[lang].address;
+  }
+
+  renderProducts();
+}
+
+function filterFetas(category, btnElement) {
+  currentCategory = category;
+  if (btnElement) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+  }
+  renderProducts();
+}
+
+function renderProducts() {
+  const container = document.getElementById("productGrid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  const t = i18n[currentLang];
+
+  const filteredProducts = allProducts.filter(item => {
+    if (currentCategory === 'all') return true;
+    return item.category === currentCategory;
+  });
+
+  filteredProducts.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.setAttribute("data-category", item.category || "");
+    
+    const fullImageUrl = new URL(item.image, window.location.href).href;
+    const priceDisplay = item.price > 0 ? `₹${item.price}` : t.contactPrice;
+    const displayName = getLocalizedProductName(item.name, currentLang);
+
+    const messageText = 
+`${t.waMsg}👑 *${displayName}*
+💰 *${t.waPriceLabel}:* ${priceDisplay}
+📂 *${t.waCatLabel}:* ${item.category || "Feta"}
+📝 *${t.waDescLabel}:* ${item.description || ""}
+
+📸 *${t.waPhotoLabel}:*
+${fullImageUrl}
+${t.waFooter}`;
+
+    const waLink = `https://wa.me/919766114461?text=${encodeURIComponent(messageText)}`;
+
+    card.innerHTML = `
+      <img src="${item.image}" alt="${displayName}" style="cursor: zoom-in;" onerror="this.src='https://via.placeholder.com/300x250?text=Feta+Photo'">
+      <div class="card-info">
+        <h4>${displayName}</h4>
+        <p class="price" style="font-size: 14px;">${priceDisplay}</p>
+        <a href="${waLink}" target="_blank" class="order-btn">
+          <i class="fab fa-whatsapp"></i> ${t.orderBtn}
+        </a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function sendBookingToWhatsApp(event) {
+  event.preventDefault();
+  const name = document.getElementById('custName').value;
+  const village = document.getElementById('custVillage').value;
+  const date = document.getElementById('eventDate').value;
+  const serviceSelect = document.getElementById('serviceType');
+  const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+  const qty = document.getElementById('fetaQty').value;
+
+  const msg = `नमस्कार नंदकुमार फेटेवाले,%0Aमला फेट्याची ऑर्डर/चौकशी करायची आहे:%0A%0A*नाव:* ${name}%0A*गाव:* ${village}%0A*तारीख:* ${date}%0A*सेवा:* ${service}%0A*एकूण फेटे:* ${qty}`;
+  window.open(`https://wa.me/919766114461?text=${msg}`, '_blank');
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid')) {
+    const modal = document.getElementById('imageLightbox');
+    const modalImg = document.getElementById('lightboxImg');
+    const caption = document.getElementById('lightboxCaption');
+    if (modal && modalImg) {
+      modal.style.display = 'flex';
+      modalImg.src = e.target.src;
+      caption.innerText = e.target.alt || '';
+    }
+  }
+});
+
+function closeLightbox() {
+  const modal = document.getElementById('imageLightbox');
+  if (modal) modal.style.display = 'none';
+}
+
+// ५. डेटा लोड करणे आणि भाषा सुरू करणे
+fetch('products.json')
+  .then(response => response.json())
+  .then(products => {
+    allProducts = products;
+    setLanguage(currentLang); // इथे सगळ्यात आधी भाषा आणि प्रॉडक्ट्स लोड होतील
+  })
+  .catch(err => {
+    console.error("Data load error:", err);
+  });
