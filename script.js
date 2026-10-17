@@ -1,6 +1,260 @@
-let allProducts = [];
+// Nandkumar Fetewale - script.js
 let currentLang = 'mr';
 let currentCategory = 'all';
+
+// १. ३२ फेट्यांचा डीफॉल्ट डेटा (products.json लोड न झाल्यास हा डेटा थेट काम करेल)
+const defaultProducts = [
+  {
+    "id": 1,
+    "name": "शाही लाल वेलव्हेट फेटा (Royal Red Velvet Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "प्रिमियम रेड वेलव्हेट कापड, सोनेरी जरी बॉर्डर, पांढरा तुरा आणि स्टोन कलगी ब्रोचसह नवरदेवासाठी खास शाही लूक.",
+    "price": 0,
+    "image": "images/navardev-surya-pankha.jpg"
+  },
+  {
+    "id": 2,
+    "name": "रजवाडी मरून व क्रीम फेटा (Rajwadi Maroon & Cream Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "वाईन मरून वेलव्हेट आणि ऑफ-व्हाईट कॉम्बिनेशन, गोल जरीचा पंखा, मोत्यांची माळ आणि डिझायनर कलगी ब्रोच.",
+    "price": 0,
+    "image": "images/navardev-maroon-rajwadi.jpg"
+  },
+  {
+    "id": 3,
+    "name": "नवरदेव स्पेशल डिझायनर कलेक्शन (Groom Special Collection)",
+    "category": "नवरदेव फेटा",
+    "description": "सिल्व्हर, गोल्डन आणि स्काय-ब्लू शेड्समधील नवरदेवासाठी हाताने तयार केलेले खास डिझायनर फेटे.",
+    "price": 0,
+    "image": "images/navardev-collection-set.jpg"
+  },
+  {
+    "id": 4,
+    "name": "क्लासिक ऑफ-व्हाईट व रेड बॉर्डर फेटा (Classic Off-White & Red Border Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "शेरवानीवर खुलून दिसणारा शांत ऑफ-व्हाईट रंग, लाल व सोनेरी सिक्विन बॉर्डर, मोर डिझाईन ब्रोच आणि पांढरा तुरा.",
+    "price": 0,
+    "image": "images/navardev-offwhite-red.jpg"
+  },
+  {
+    "id": 5,
+    "name": "रॉयल सिल्व्हर ब्रोकेड फेटा (Royal Silver Brocade Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "चकचकीत सिल्व्हर ब्रोकेड कापड, वाईन वेलव्हेट बॉर्डरवर जरीकाम, माणिक खडा कलगी आणि मोत्यांची सर.",
+    "price": 0,
+    "image": "images/navardev-silver-brocade.jpg"
+  },
+  {
+    "id": 6,
+    "name": "व्हाईट अँड राणी पिंक फेटा (White & Rani Pink Designer Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "पांढऱ्या सिल्क ब्रोकेडवर राणी गुलाबी रंगाचा वेलव्हेट पंखा, सोनेरी लेस, पांढरा तुरा आणि आकर्षक ब्रोच.",
+    "price": 0,
+    "image": "images/navardev-rani-pink.jpg"
+  },
+  {
+    "id": 7,
+    "name": "हेवी रजवाडी मरून वेलव्हेट फेटा (Heavy Rajwadi Maroon Zari Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "हेवी जरी वर्क, मरून वेलव्हेट, डबल लेयर मोत्यांची माळ आणि रुबाबदार पांढऱ्या तुऱ्यासह परिपूर्ण नवरदेव फेटा.",
+    "price": 0,
+    "image": "images/navardev-heavy-maroon.jpg"
+  },
+  {
+    "id": 8,
+    "name": "लाँग शेमला सिल्क फेटा (Long Shemla Silk Groom Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "खांद्यावर रुबाबदारपणे सोडण्यासाठी लांब शेमला (पदर), क्रीम सिल्क फॅब्रिक, मरून बॉर्डर आणि शाही ब्रोच.",
+    "price": 0,
+    "image": "images/navardev-long-shemla.jpg"
+  },
+  {
+    "id": 9,
+    "name": "पारंपरिक कोयरी ब्रोच फेटा (Traditional Koyari Brooch Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "पारंपरिक कोयरी (कैरी) आकाराचा डिझायनर ब्रोच, नक्षीदार वेलव्हेट लेस आणि व्हाईट-गोल्डन कॉम्बिनेशन.",
+    "price": 0,
+    "image": "images/navardev-koyari-brooch.jpg"
+  },
+  {
+    "id": 10,
+    "name": "क्रीम व रेड फेटा विथ मॅचिंग उपरणे (Cream & Red Feta with Matching Dupatta)",
+    "category": "नवरदेव फेटा",
+    "description": "प्रिमियम क्रीम फॅब्रिक, लाल व सोनेरी नक्षीदार बॉर्डर, शाही कलगी, तुरा आणि सोबत नवरदेवासाठी खास मॅचिंग उपरणे (दुपट्टा).",
+    "price": 0,
+    "image": "images/navardev-feta-with-dupatta.jpg"
+  },
+  {
+    "id": 11,
+    "name": "शाही रेड सिक्विन वेलव्हेट फेटा (Shahi Red Sequin Velvet Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "लाल वेलव्हेटवर बारीक सिक्विन वर्क, सोनेरी मोत्यांचा ब्रोच, पांढरा तुरा आणि गोल पंख्यासह रुबाबदार नवरदेव फेटा.",
+    "price": 0,
+    "image": "images/navardev-red-sequin.jpg"
+  },
+  {
+    "id": 12,
+    "name": "रॉयल रेड फेटा विथ पिंक तुरा (Royal Red Feta with Pink Plume)",
+    "category": "नवरदेव फेटा",
+    "description": "लाल वेलव्हेट आणि पांढऱ्या कपड्याचे कॉम्बिनेशन, सोनेरी नक्षीकाम, मोत्यांची माळ आणि आकर्षक गुलाबी रंगाचा तुरा.",
+    "price": 0,
+    "image": "images/navardev-red-pink-plume.jpg"
+  },
+  {
+    "id": 13,
+    "name": "सूर्य पंखा रेड व गोल्डन फेटा (Surya Pankha Red & Gold Shahi Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "सूर्यकिरणांप्रमाणे उठावदार सोनेरी पंखा, लाल वेलव्हेटवर जरीकाम, पांढरा तुरा आणि मध्यभागी रुबाबदार खड्यांची कलगी.",
+    "price": 0,
+    "image": "images/navardev-surya-pankha.jpg"
+  },
+  {
+    "id": 14,
+    "name": "राणी पिंक व व्हाईट वेलव्हेट फेटा (Rani Pink & White Velvet Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "आकर्षक राणी गुलाबी वेलव्हेट, मोती बॉर्डर, चौकोनी खड्यांचा ब्रोच, पांढरा तुरा आणि शेरवानीला शोभून दिसणारा रॉयल लूक.",
+    "price": 0,
+    "image": "images/navardev-maroon-blue-plume.jpg"
+  },
+  {
+    "id": 15,
+    "name": "रॉयल जांभळा पैठणी सिल्क फेटा (Royal Purple Paithani Silk Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "पारंपरिक जांभळा (Purple) रंग, पैठणी पद्धतीची सोनेरी जरी बॉर्डर, लाल खड्याचा कोयरी ब्रोच आणि पांढरा तुरा.",
+    "price": 0,
+    "image": "images/navardev-royal-purple.jpg"
+  },
+  {
+    "id": 16,
+    "name": "पर्ल व्हाईट व सिल्व्हर फेटा (Pearl White & Silver Elegant Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "संपूर्ण पांढऱ्या व सिल्व्हर शेडमधील सोबर लूक, नाजूक लेस, मोत्यांची दुहेरी माळ आणि सिल्व्हर ब्रोचसह शांत व देखणा फेटा.",
+    "price": 0,
+    "image": "images/navardev-pearl-white.jpg"
+  },
+  {
+    "id": 17,
+    "name": "व्हाईट व मरून सिक्विन डिझायनर फेटा (White & Maroon Sequin Designer Feta)",
+    "category": "नवरदेव फेटा",
+    "description": "ऑफ-व्हाइट कपड्यावर मरून सिक्विन वेलव्हेट पट्टी, सोनेरी पंखा, कोयरी ब्रोच आणि मोत्यांची सर असलेला क्लासी फेटा.",
+    "price": 0,
+    "image": "images/navardev-white-maroon-sequin.jpg"
+  },
+  {
+    "id": 18,
+    "name": "पुढारी प्रिंटेड फेटा - तयार पंख्यासहित (पिस्ता ग्रीन)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "पिस्ता ग्रीन फुलांची प्रिंट, सोनेरी जरी बॉर्डर असलेला तयार पंखा, लग्न व स्वागतासाठी लोकप्रिय फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-ready-sample.jpg"
+  },
+  {
+    "id": 19,
+    "name": "पुढारी प्रिंटेड फेटा - डार्क रेड (Dark Red Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "गडद लाल रंगावर बारीक फुलांची डिझाईन, पाहुणे व वऱ्हाडी मंडळींच्या स्वागतासाठी पारंपरिक फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-dark-red.jpg"
+  },
+  {
+    "id": 20,
+    "name": "पुढारी प्रिंटेड फेटा - क्रीम / बदामी (Cream Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "शांत व देखणा क्रीम / बदामी रंग, नाजूक फ्लोरल प्रिंट, कोणत्याही कपड्यावर शोभून दिसणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-cream.jpg"
+  },
+  {
+    "id": 21,
+    "name": "पुढारी प्रिंटेड फेटा - राणी पिंक (Rani Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "उठावदार राणी गुलाबी रंग, सोनेरी फ्लोरल बुट्टी, लग्नकार्यात खास उठून दिसणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-rani-pink.jpg"
+  },
+  {
+    "id": 22,
+    "name": "पुढारी प्रिंटेड फेटा - बेबी पिंक (Baby Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "फिकट नाजूक गुलाबी रंग, आकर्षक प्रिंट, सत्कार आणि स्वागत समारंभासाठी उत्तम निवड.",
+    "price": 0,
+    "image": "images/pudhari-feta-baby-pink.jpg"
+  },
+  {
+    "id": 23,
+    "name": "पुढारी प्रिंटेड फेटा - लेमन येलो (Bright Yellow Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "चमकदार पिवळा रंग, शुभकार्यासाठी आणि हळदी समारंभासाठी अत्यंत लोकप्रिय फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-yellow.jpg"
+  },
+  {
+    "id": 24,
+    "name": "पुढारी प्रिंटेड फेटा - मस्टर्ड / केशरी पिवळा (Mustard Gold)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "गडद मस्टर्ड पिवळा रंग, पारंपरिक फ्लोरल नक्षी, मंगलकार्यासाठी आकर्षक लूक.",
+    "price": 0,
+    "image": "images/pudhari-feta-mustard.jpg"
+  },
+  {
+    "id": 25,
+    "name": "पुढारी प्रिंटेड फेटा - पीच / केशरी (Peach Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "ट्रेंडी पीच (फिकट केशरी) रंग, नाजूक डिझाईन, पाहुण्यांच्या आदरातिथ्यासाठी खास फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-peach.jpg"
+  },
+  {
+    "id": 26,
+    "name": "पुढारी प्रिंटेड फेटा - लॅव्हेंडर / जांभळट गुलाबी (Lavender Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "युनिक लॅव्हेंडर जांभळट शेड, फ्लोरल प्रिंट, आधुनिक व पारंपरिकतेचा सुरेख संगम.",
+    "price": 0,
+    "image": "images/pudhari-feta-light-purple.jpg"
+  },
+  {
+    "id": 27,
+    "name": "पुढारी प्रिंटेड फेटा - स्काय ब्लू (Sky Blue Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "आकर्षक आकाशी (स्काय ब्लू) रंग, ताजेतवाने लुक देणारी फ्लोरल प्रिंट.",
+    "price": 0,
+    "image": "images/pudhari-feta-sky-blue.jpg"
+  },
+  {
+    "id": 28,
+    "name": "पुढारी प्रिंटेड फेटा - टोमॅटो रेड (Tomato Red Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "उठावदार टोमॅटो रेड रंग, फ्लोरल बुट्टी, राजकीय सत्कार व विवाह सोहळ्यांसाठी उत्तम.",
+    "price": 0,
+    "image": "images/pudhari-feta-red.jpg"
+  },
+  {
+    "id": 29,
+    "name": "पुढारी प्रिंटेड फेटा - मिंट / सी ग्रीन (Mint Green Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "थंड व फ्रेश मिंट ग्रीन रंग, सुबक नक्षी, उन्हाळी व डे-वेडिंगसाठी परफेक्ट फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-mint-green.jpg"
+  },
+  {
+    "id": 30,
+    "name": "पुढारी प्रिंटेड फेटा - रोझ पिंक / मॅजेन्टा (Rose Pink Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "रोझ पिंक शेड, ठळक फ्लोरल प्रिंट, वऱ्हाडी फेट्यांमध्ये नेहमी मागणीत असणारा रंग.",
+    "price": 0,
+    "image": "images/pudhari-feta-rose-pink.jpg"
+  },
+  {
+    "id": 31,
+    "name": "पुढारी प्रिंटेड फेटा - व्हाईट / सिल्व्हर ग्रे (White Floral)",
+    "category": "पुढारी / वऱ्हाडी फेटा",
+    "description": "पांढऱ्या बेसवर रंगीबेरंगी बारीक फुले, प्रतिष्ठित व सोबर लुक देणारा फेटा.",
+    "price": 0,
+    "image": "images/pudhari-feta-white.jpg"
+  }
+];
+
+let allProducts = defaultProducts;
 
 // मराठी, हिंदी, इंग्रजी आणि तेलुगू (Telugu) संपूर्ण डिक्शनरी
 const i18n = {
@@ -198,143 +452,4 @@ const i18n = {
     phoneLabel: "ఫోన్:",
     waBtn: "WhatsApp లో సంప్రదించండి",
     mapBtn: "Google Map లో చిరునామా చూడండి",
-    copy: "© 2026 నందకుమార్ ఫేటేవాలే. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.",
-    orderBtn: "WhatsApp లో ఆర్డర్ చేయండి",
-    contactPrice: "ధర కోసం సంప్రదించండి",
-    waPriceLabel: "ధర",
-    waCatLabel: "రకం",
-    waDescLabel: "వివరాలు",
-    waPhotoLabel: "ఫోటో",
-    waMsg: "నమస్కారం నందకుమార్ ఫేటేవాలే,\nనేను ఈ ఫేటాను ఆర్డర్ / విచారణ చేయాలనుకుంటున్నాను:\n\n",
-    waFooter: "\nదయచేసి ఇది అందుబాటులో ఉందో లేదో తెలియజేయండి."
-  }
-};
-
-function getLocalizedProductName(name, lang) {
-  if (!name) return "";
-  if (lang === 'en') {
-    const match = name.match(/\(([^)]+)\)/);
-    if (match) return match[1];
-  }
-  return name;
-}
-
-function setLanguage(lang) {
-  currentLang = lang;
-  
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = document.getElementById(`btn-${lang}`);
-  if (activeBtn) activeBtn.classList.add('active');
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18n[lang] && i18n[lang][key]) {
-      el.textContent = i18n[lang][key];
-    }
-  });
-
-  const addrEl = document.getElementById('addressText');
-  if (addrEl && i18n[lang]) {
-    addrEl.innerHTML = i18n[lang].address;
-  }
-
-  renderProducts();
-}
-
-function filterFetas(category, btnElement) {
-  currentCategory = category;
-  if (btnElement) {
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    btnElement.classList.add('active');
-  }
-  renderProducts();
-}
-
-function renderProducts() {
-  const container = document.getElementById("productGrid");
-  if (!container) return;
-  container.innerHTML = "";
-
-  const t = i18n[currentLang];
-
-  const filteredProducts = allProducts.filter(item => {
-    if (currentCategory === 'all') return true;
-    return item.category === currentCategory;
-  });
-
-  filteredProducts.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.setAttribute("data-category", item.category || "");
-    
-    const fullImageUrl = new URL(item.image, window.location.href).href;
-    const priceDisplay = item.price > 0 ? `₹${item.price}` : t.contactPrice;
-    const displayName = getLocalizedProductName(item.name, currentLang);
-
-    const messageText = 
-`${t.waMsg}👑 *${displayName}*
-💰 *${t.waPriceLabel}:* ${priceDisplay}
-📂 *${t.waCatLabel}:* ${item.category || "Feta"}
-📝 *${t.waDescLabel}:* ${item.description || ""}
-
-📸 *${t.waPhotoLabel}:*
-${fullImageUrl}
-${t.waFooter}`;
-
-    const waLink = `https://wa.me/919766114461?text=${encodeURIComponent(messageText)}`;
-
-    card.innerHTML = `
-      <img src="${item.image}" alt="${displayName}" style="cursor: zoom-in;" onerror="this.src='https://via.placeholder.com/300x250?text=Feta+Photo'">
-      <div class="card-info">
-        <h4>${displayName}</h4>
-        <p class="price" style="font-size: 14px;">${priceDisplay}</p>
-        <a href="${waLink}" target="_blank" class="order-btn">
-          <i class="fab fa-whatsapp"></i> ${t.orderBtn}
-        </a>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-function sendBookingToWhatsApp(event) {
-  event.preventDefault();
-  const name = document.getElementById('custName').value;
-  const village = document.getElementById('custVillage').value;
-  const date = document.getElementById('eventDate').value;
-  const serviceSelect = document.getElementById('serviceType');
-  const service = serviceSelect.options[serviceSelect.selectedIndex].text;
-  const qty = document.getElementById('fetaQty').value;
-
-  const msg = `नमस्कार नंदकुमार फेटेवाले,%0Aमला फेट्याची ऑर्डर/चौकशी करायची आहे:%0A%0A*नाव:* ${name}%0A*गाव:* ${village}%0A*तारीख:* ${date}%0A*सेवा:* ${service}%0A*एकूण फेटे:* ${qty}`;
-  window.open(`https://wa.me/919766114461?text=${msg}`, '_blank');
-}
-
-document.addEventListener('click', function(e) {
-  if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid')) {
-    const modal = document.getElementById('imageLightbox');
-    const modalImg = document.getElementById('lightboxImg');
-    const caption = document.getElementById('lightboxCaption');
-    if (modal && modalImg) {
-      modal.style.display = 'flex';
-      modalImg.src = e.target.src;
-      caption.innerText = e.target.alt || '';
-    }
-  }
-});
-
-function closeLightbox() {
-  const modal = document.getElementById('imageLightbox');
-  if (modal) modal.style.display = 'none';
-}
-
-// ५. डेटा लोड करणे आणि भाषा सुरू करणे
-fetch('products.json')
-  .then(response => response.json())
-  .then(products => {
-    allProducts = products;
-    setLanguage(currentLang); // इथे सगळ्यात आधी भाषा आणि प्रॉडक्ट्स लोड होतील
-  })
-  .catch(err => {
-    console.error("Data load error:", err);
-  });
+    copy: "© 202
