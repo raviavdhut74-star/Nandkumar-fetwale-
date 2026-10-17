@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>नंदकुमार फेटेवाले | घोडा, कळमनुरी</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <meta name="theme-color" content="#b71c1c">
+  <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* नवीन फीचर्ससाठी आकर्षक स्टाईल्स */
@@ -176,11 +180,13 @@
   <!-- Header -->
   <header class="header">
     <div class="logo">
+      <img src="logo.svg" alt="नंदकुमार फेटेवाले लोगो" class="logo-img">
       <h1 data-i18n="shopTitle">नंदकुमार फेटेवाले</h1>
       <p class="tagline" data-i18n="tagline">शाही व पारंपारिक फेटे आणि नवरदेव स्पेशल मेकअप</p>
       <p class="owner" data-i18n="owner">प्रो.प्रा. गायकवाड | 📍 घोडा, ता. कळमनुरी, जि. हिंगोली</p>
     </div>
     <div class="quick-call">
+      <button id="installBtn" class="call-btn" style="display:none;border:none;cursor:pointer;" onclick="installApp()"><i class="fas fa-download"></i> <span data-i18n="installBtn">अॅप इन्स्टॉल करा</span></button>
       <a href="tel:9766114461" class="call-btn"><i class="fas fa-phone-alt"></i> 9766114461</a>
       <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेट्याबद्दल%20चौकशी%20करायची%20आहे." target="_blank" class="wa-top-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
@@ -204,9 +210,25 @@
       <button class="filter-btn" onclick="filterFetas('पुढारी / वऱ्हाडी फेटा', this)" data-i18n="filterGuest">पुढारी / वऱ्हाडी फेटा</button>
     </div>
 
+    <div class="loc-box">
+      <p data-i18n="locHint">ऑर्डर देण्याआधी लोकेशन जोडा, म्हणजे आम्हाला तुमच्या ठिकाणी पोहोचणे सोपे होईल.</p>
+      <button type="button" class="loc-btn" onclick="getMyLocation()" data-i18n="locBtn">📍 माझे लोकेशन जोडा</button>
+      <div class="loc-status"></div>
+    </div>
+
+    <div class="search-box">
+      <input type="search" id="searchInput" placeholder="फेटा शोधा (उदा. मरून, पिंक)" oninput="searchFetas(this.value)">
+    </div>
+
     <div class="product-grid" id="productGrid">
       <!-- उत्पादने JavaScript द्वारे येथे दिसतील -->
     </div>
+  </section>
+
+  <!-- फोटो गॅलरी -->
+  <section class="extra-section">
+    <h2 class="title" data-i18n="galleryTitle">फोटो गॅलरी</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
   <!-- नवीन विभाग १: स्पेशल वेडिंग पॅकेजेस -->
@@ -253,6 +275,20 @@
     </div>
   </section>
 
+  <!-- ग्राहकांचे अभिप्राय (script.js मधली REVIEWS यादी रिकामी असल्यास लपते) -->
+  <section class="extra-section" id="reviewsSection" style="display:none;">
+    <h2 class="title" data-i18n="reviewsTitle">आमचे ग्राहक काय म्हणतात</h2>
+    <div class="extra-grid" id="reviewsGrid"></div>
+  </section>
+
+  <!-- WhatsApp ग्रुप (script.js मध्ये लिंक टाकल्यावरच दिसतो) -->
+  <section class="extra-section" id="groupSection" style="display:none;">
+    <h2 class="title" data-i18n="groupTitle">आमच्या WhatsApp ग्रुपमध्ये सामील व्हा</h2>
+    <a id="groupBtn" class="btn-wa" href="#" target="_blank" rel="noopener" style="font-size:18px;padding:14px 28px;">
+      <i class="fab fa-whatsapp"></i> <span data-i18n="groupBtn">ग्रुप जॉईन करा</span>
+    </a>
+  </section>
+
   <!-- नवीन विभाग ३: झटपट WhatsApp बुकिंग फॉर्म -->
   <section class="extra-section" style="background-color: #fdf2f2;">
     <h2 class="title" data-i18n="bookMainTitle">झटपट बुकिंग / चौकशी करा</h2>
@@ -283,11 +319,22 @@
           <label data-i18n="lblQty">अंदाजे किती फेटे हवे आहेत?</label>
           <input type="number" id="fetaQty" placeholder="उदा. 1 किंवा 50" min="1" required>
         </div>
+        <div class="form-group" style="text-align:center;">
+          <button type="button" class="loc-btn" onclick="getMyLocation()" data-i18n="locBtn">📍 माझे लोकेशन जोडा</button>
+          <div class="loc-status"></div>
+        </div>
         <button type="submit" class="submit-wa-btn">
           <i class="fab fa-whatsapp"></i> <span data-i18n="bookSubmitBtn">WhatsApp वर बुकिंग पाठवा</span>
         </button>
       </form>
     </div>
+  </section>
+
+  <!-- नकाशा -->
+  <section class="extra-section">
+    <h2 class="title" data-i18n="mapTitle">आमचा पत्ता (नकाशा)</h2>
+    <iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Ghoda+Kalamnuri+Hingoli&output=embed"></iframe>
   </section>
 
   <!-- फोटो झूम पॉप-अप (Image Lightbox) -->
@@ -322,12 +369,13 @@
       const v = id => document.getElementById(id).value;
       const msg = "नमस्कार नंदकुमार फेटेवाले,\nमला फेट्याची ऑर्डर/चौकशी करायची आहे:\n\n" +
         "*नाव:* " + v('custName') + "\n*गाव:* " + v('custVillage') + "\n*तारीख:* " + v('eventDate') +
-        "\n*सेवा:* " + v('serviceType') + "\n*एकूण फेटे:* " + v('fetaQty');
+        "\n*सेवा:* " + v('serviceType') + "\n*एकूण फेटे:* " + v('fetaQty') +
+        (userLoc ? "\n*लोकेशन:* " + userLoc : "");
       window.open("https://wa.me/919766114461?text=" + encodeURIComponent(msg), '_blank');
     }
 
     document.addEventListener('click', function (e) {
-      if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid')) {
+      if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid, #galleryGrid')) {
         document.getElementById('imageLightbox').style.display = 'flex';
         document.getElementById('lightboxImg').src = e.target.src;
         document.getElementById('lightboxCaption').innerText = e.target.alt || '';
