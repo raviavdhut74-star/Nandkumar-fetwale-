@@ -466,6 +466,23 @@ const i18n = {
 
 const WA_NUMBER = "919766114461";
 
+// तुमचा WhatsApp ग्रुप लिंक इथे टाका (उदा. "https://chat.whatsapp.com/XXXX"). रिकामी ठेवल्यास तो विभाग दिसणार नाही.
+const WHATSAPP_GROUP_LINK = "";
+
+// ग्राहकांचे खरे अभिप्राय इथे जोडा. रिकामे असल्यास विभाग दिसणार नाही.
+// उदा. { name: "राहुल पाटील", place: "कळमनुरी", text: "फेटा खूप सुंदर होता." }
+const REVIEWS = [];
+
+let searchText = "";
+
+const i18nExtra = {
+  mr: { searchPlaceholder: "फेटा शोधा (उदा. मरून, पिंक)", noResults: "कोणताही फेटा सापडला नाही", galleryTitle: "फोटो गॅलरी", reviewsTitle: "आमचे ग्राहक काय म्हणतात", groupTitle: "आमच्या WhatsApp ग्रुपमध्ये सामील व्हा", groupBtn: "ग्रुप जॉईन करा", mapTitle: "आमचा पत्ता (नकाशा)", installBtn: "अॅप इन्स्टॉल करा", tagNew: "नवीन", tagPopular: "लोकप्रिय" },
+  hi: { searchPlaceholder: "फेंटा खोजें (जैसे मरून, पिंक)", noResults: "कोई फेंटा नहीं मिला", galleryTitle: "फोटो गैलरी", reviewsTitle: "हमारे ग्राहक क्या कहते हैं", groupTitle: "हमारे WhatsApp ग्रुप से जुड़ें", groupBtn: "ग्रुप जॉइन करें", mapTitle: "हमारा पता (नक्शा)", installBtn: "ऐप इंस्टॉल करें", tagNew: "नया", tagPopular: "लोकप्रिय" },
+  en: { searchPlaceholder: "Search turbans (e.g. maroon, pink)", noResults: "No turban found", galleryTitle: "Photo Gallery", reviewsTitle: "What Our Customers Say", groupTitle: "Join Our WhatsApp Group", groupBtn: "Join Group", mapTitle: "Our Location (Map)", installBtn: "Install App", tagNew: "New", tagPopular: "Popular" },
+  te: { searchPlaceholder: "ఫేటా వెతకండి (ఉదా. మెరూన్, పింక్)", noResults: "ఏ ఫేటా దొరకలేదు", galleryTitle: "ఫోటో గ్యాలరీ", reviewsTitle: "మా కస్టమర్లు ఏమంటున్నారు", groupTitle: "మా WhatsApp గ్రూప్‌లో చేరండి", groupBtn: "గ్రూప్ చేరండి", mapTitle: "మా చిరునామా (మ్యాప్)", installBtn: "యాప్ ఇన్‌స్టాల్ చేయండి", tagNew: "కొత్త", tagPopular: "ప్రసిద్ధ" }
+};
+Object.keys(i18nExtra).forEach(l => Object.assign(i18n[l], i18nExtra[l]));
+
 function esc(str) {
   return String(str == null ? "" : str).replace(/[&<>"']/g, c => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -496,6 +513,12 @@ function priceText(p, t) {
   return v;
 }
 
+function hasPrice(p) {
+  if (typeof p.price === "number") return p.price > 0;
+  const v = String(p.price || "").trim();
+  return !!v && v !== "0" && v !== "₹0";
+}
+
 function buildWaLink(p, t) {
   let msg = t.waMsg + p.name + "\n";
   msg += t.waCatLabel + ": " + p.category + "\n";
@@ -512,20 +535,92 @@ function renderProducts() {
   const grid = document.getElementById("productGrid");
   if (!grid) return;
   const t = i18n[currentLang] || i18n.mr;
-  const list = allProducts.filter(p => currentCategory === "all" || p.category === currentCategory);
+  const q = searchText.trim().toLowerCase();
+  const list = allProducts.filter(p =>
+    (currentCategory === "all" || p.category === currentCategory) &&
+    (!q || (p.name + " " + (p.description || "")).toLowerCase().includes(q))
+  );
+  if (!list.length) {
+    grid.innerHTML = `<p class="no-results">${esc(t.noResults)}</p>`;
+    return;
+  }
   grid.innerHTML = list.map(p => `
     <div class="card product-card" data-category="${esc(p.category)}">
-      <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div class="img-wrap">
+        ${p.tag === "new" ? `<span class="tag tag-new">${esc(t.tagNew)}</span>` : ""}
+        ${p.tag === "popular" ? `<span class="tag tag-popular">${esc(t.tagPopular)}</span>` : ""}
+        <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.visibility='hidden'">
+      </div>
       <div class="card-info">
         <div>
           <h4>${esc(p.name)}</h4>
-          <div class="price">${esc(priceText(p, t))}</div>
+          <div class="price">${esc(t.contactPrice)}</div>
+          ${hasPrice(p) ? `<div class="price-amount">${esc(priceText(p, t))}</div>` : ""}
         </div>
         <a class="order-btn" href="${buildWaLink(p, t)}" target="_blank" rel="noopener">
           <i class="fab fa-whatsapp"></i> ${esc(t.orderBtn)}
         </a>
       </div>
     </div>`).join("");
+}
+
+function searchFetas(value) {
+  searchText = value || "";
+  renderProducts();
+}
+
+function renderGallery() {
+  const g = document.getElementById("galleryGrid");
+  if (!g) return;
+  const seen = new Set();
+  const imgs = allProducts.filter(p => !seen.has(p.image) && seen.add(p.image));
+  g.innerHTML = imgs.map(p =>
+    `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">`
+  ).join("");
+}
+
+function renderReviews() {
+  const sec = document.getElementById("reviewsSection");
+  const box = document.getElementById("reviewsGrid");
+  if (!sec || !box) return;
+  if (!REVIEWS.length) { sec.style.display = "none"; return; }
+  sec.style.display = "";
+  box.innerHTML = REVIEWS.map(r => `
+    <div class="info-card">
+      <p>“${esc(r.text)}”</p>
+      <h3 style="margin-top:10px;font-size:15px;">${esc(r.name)}${r.place ? " · " + esc(r.place) : ""}</h3>
+    </div>`).join("");
+}
+
+function setupGroup() {
+  const sec = document.getElementById("groupSection");
+  const btn = document.getElementById("groupBtn");
+  if (!sec || !btn) return;
+  if (!WHATSAPP_GROUP_LINK) { sec.style.display = "none"; return; }
+  btn.href = WHATSAPP_GROUP_LINK;
+  sec.style.display = "";
+}
+
+// अॅप इन्स्टॉल बटन
+let deferredInstall = null;
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredInstall = e;
+  const b = document.getElementById("installBtn");
+  if (b) b.style.display = "inline-block";
+});
+function installApp() {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.finally(() => {
+    deferredInstall = null;
+    const b = document.getElementById("installBtn");
+    if (b) b.style.display = "none";
+  });
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 }
 
 function filterFetas(category, btnElement) {
@@ -549,6 +644,8 @@ function setLanguage(lang) {
   });
   const addr = document.getElementById("addressText");
   if (addr) addr.innerHTML = t.address;
+  const si = document.getElementById("searchInput");
+  if (si) si.placeholder = t.searchPlaceholder;
   try { localStorage.setItem("nk_lang", lang); } catch (e) {}
   renderProducts();
 }
@@ -566,11 +663,15 @@ async function loadProducts() {
   }
   allProducts = getExtraProducts().concat(base);
   renderProducts();
+  renderGallery();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   let lang = "mr";
   try { lang = localStorage.getItem("nk_lang") || "mr"; } catch (e) {}
   setLanguage(lang);
+  renderReviews();
+  setupGroup();
   loadProducts();
 });
+    
