@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>नंदकुमार फेटेवाले | घोडा, कळमनुरी</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* नवीन फीचर्ससाठी आकर्षक स्टाईल्स */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 25px;
+      flex-wrap: wrap;
+      padding: 0 10px;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border: 2px solid #b71c1c;
+      background: #fff;
+      color: #b71c1c;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #b71c1c;
+      color: #fff;
+    }
+    .product-card img {
+      cursor: zoom-in;
+    }
+
+    /* आमची वैशिष्ट्ये आणि पॅकेजेस */
+    .extra-section {
+      padding: 35px 15px;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .info-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-top: 4px solid #b71c1c;
+    }
+    .info-card i {
+      font-size: 34px;
+      color: #b71c1c;
+      margin-bottom: 12px;
+    }
+    .info-card h3 {
+      margin-bottom: 10px;
+      color: #222;
+      font-size: 18px;
+    }
+    .info-card p {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* थेट बुकिंग फॉर्म */
+    .booking-box {
+      max-width: 480px;
+      margin: 20px auto 0;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: left;
+      border: 1px solid #eee;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+      font-size: 14px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    .submit-wa-btn {
+      width: 100%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .submit-wa-btn:hover {
+      background: #1ebe57;
+    }
+
+    /* फोटो झूम (Lightbox) */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.88);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .lightbox-modal img {
+      max-width: 95%;
+      max-height: 80vh;
+      border-radius: 10px;
+      border: 3px solid #fff;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #fff;
+      font-size: 38px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #lightboxCaption {
+      color: #fff;
+      margin-top: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- इन-ॲप भाषा बदलण्याचे बटन्स -->
+  <div class="lang-bar">
+    <span class="lang-label"><i class="fas fa-globe"></i> भाषा / Language:</span>
+    <div class="lang-buttons">
+      <button class="lang-btn active" id="btn-mr" onclick="setLanguage('mr')">मराठी</button>
+      <button class="lang-btn" id="btn-hi" onclick="setLanguage('hi')">हिंदी</button>
+      <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+      <button class="lang-btn" id="btn-te" onclick="setLanguage('te')">తెలుగు</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1 data-i18n="shopTitle">नंदकुमार फेटेवाले</h1>
+      <p class="tagline" data-i18n="tagline">शाही व पारंपारिक फेटे आणि नवरदेव स्पेशल मेकअप</p>
+      <p class="owner" data-i18n="owner">प्रो.प्रा. गायकवाड | 📍 घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+    </div>
+    <div class="quick-call">
+      <a href="tel:9766114461" class="call-btn"><i class="fas fa-phone-alt"></i> 9766114461</a>
+      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेट्याबद्दल%20चौकशी%20करायची%20आहे." target="_blank" class="wa-top-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="hero">
+    <h2 data-i18n="heroTitle">लग्नसराई, सण-उत्सव आणि शुभकार्यासाठी फेटे उपलब्ध!</h2>
+    <p data-i18n="heroSub">नवरदेवाचा स्पेशल मेकअप व फेटा प्रत्यक्ष जागेवर येऊन बांधून मिळेल.</p>
+    <a href="#products" class="btn-main" data-i18n="heroBtn">आमची उत्पादने पहा</a>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section" id="products">
+    <h2 class="title" data-i18n="productsTitle">आमचे खास फेटे</h2>
+
+    <!-- नवीन कॅटेगरी फिल्टर बटन्स -->
+    <div class="filter-container">
+      <button class="filter-btn active" onclick="filterFetas('all', this)" data-i18n="filterAll">सर्व फेटे (All)</button>
+      <button class="filter-btn" onclick="filterFetas('नवरदेव फेटा', this)" data-i18n="filterGroom">नवरदेव फेटा</button>
+      <button class="filter-btn" onclick="filterFetas('पुढारी / वऱ्हाडी फेटा', this)" data-i18n="filterGuest">पुढारी / वऱ्हाडी फेटा</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- उत्पादने JavaScript द्वारे येथे दिसतील -->
+    </div>
+  </section>
+
+  <!-- नवीन विभाग १: स्पेशल वेडिंग पॅकेजेस -->
+  <section class="extra-section" style="background-color: #fff8f0;">
+    <h2 class="title" data-i18n="pkgMainTitle">स्पेशल लग्न पॅकेजेस (Wedding Packages)</h2>
+    <div class="extra-grid">
+      <div class="info-card">
+        <i class="fas fa-crown"></i>
+        <h3 data-i18n="pkg1Title">नवरदेव रॉयल पॅकेज</h3>
+        <p data-i18n="pkg1Desc">शाही डिझायनर फेटा + मॅचिंग उपरणे + कलगी व तुरा + नवरदेव स्पेशल प्रोफेशनल मेकअप.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-users"></i>
+        <h3 data-i18n="pkg2Title">वऱ्हाडी / पुढारी पॅकेज</h3>
+        <p data-i18n="pkg2Desc">लग्न किंवा सत्कार समारंभासाठी ५० ते ५००+ व्हीआयपी पुढारी फेटे लग्नाच्या जागेवर येऊन बांधून मिळतील.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-magic"></i>
+        <h3 data-i18n="pkg3Title">नवरदेव मेकअप सर्विस</h3>
+        <p data-i18n="pkg3Desc">हळद, लग्न आणि रिसेप्शनसाठी नवरदेवाचा एचडी (HD) व नॅचरल मेकअप प्रत्यक्ष मंडपात येऊन केला जाईल.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- नवीन विभाग २: आमची वैशिष्ट्ये -->
+  <section class="extra-section">
+    <h2 class="title" data-i18n="whyMainTitle">आमची वैशिष्ट्ये (Why Choose Us?)</h2>
+    <div class="extra-grid">
+      <div class="info-card">
+        <i class="fas fa-map-marked-alt"></i>
+        <h3 data-i18n="why1Title">थेट मंडपात सेवा</h3>
+        <p data-i18n="why1Desc">हिंगोली, नांदेड, परभणी व आसपासच्या परिसरात लग्नाच्या ठिकाणी वेळेवर येऊन फेटे बांधून मिळतील.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-gem"></i>
+        <h3 data-i18n="why2Title">प्रिमियम व स्वच्छ कापड</h3>
+        <p data-i18n="why2Desc">उच्च दर्जाचे वेलव्हेट, पैठणी सिल्क, ब्रोकेड कापड आणि आकर्षक पारंपरिक ब्रोच व तुऱ्यांचा वापर.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-rupee-sign"></i>
+        <h3 data-i18n="why3Title">योग्य आणि परवडणारे दर</h3>
+        <p data-i18n="why3Desc">किरकोळ आणि घाऊक ऑर्डरसाठी अत्यंत माफक दर व अनुभवी कारागिरांकडून जलद सेवा.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- नवीन विभाग ३: झटपट WhatsApp बुकिंग फॉर्म -->
+  <section class="extra-section" style="background-color: #fdf2f2;">
+    <h2 class="title" data-i18n="bookMainTitle">झटपट बुकिंग / चौकशी करा</h2>
+    <div class="booking-box">
+      <form onsubmit="sendBookingToWhatsApp(event)">
+        <div class="form-group">
+          <label data-i18n="lblName">तुमचे नाव (Your Name):</label>
+          <input type="text" id="custName" placeholder="उदा. राहुल पाटील" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblVillage">गाव / ठिकाण (Village / City):</label>
+          <input type="text" id="custVillage" placeholder="उदा. कळमनुरी" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblDate">कार्यक्रमाची तारीख (Event Date):</label>
+          <input type="date" id="eventDate" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblService">कशासाठी ऑर्डर करायची आहे?</label>
+          <select id="serviceType">
+            <option value="नवरदेव फेटा व मेकअप" data-i18n="opt1">नवरदेव फेटा व मेकअप</option>
+            <option value="फक्त नवरदेव फेटा" data-i18n="opt2">फक्त नवरदेव फेटा</option>
+            <option value="वऱ्हाडी / पुढारी फेटे (Bulk Order)" data-i18n="opt3">वऱ्हाडी / पुढारी फेटे (एकत्रित ऑर्डर)</option>
+            <option value="नवरदेव + वऱ्हाडी फेटे पूर्ण पॅकेज" data-i18n="opt4">नवरदेव + वऱ्हाडी फेटे पूर्ण पॅकेज</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblQty">अंदाजे किती फेटे हवे आहेत?</label>
+          <input type="number" id="fetaQty" placeholder="उदा. 1 किंवा 50" min="1" required>
+        </div>
+        <button type="submit" class="submit-wa-btn">
+          <i class="fab fa-whatsapp"></i> <span data-i18n="bookSubmitBtn">WhatsApp वर बुकिंग पाठवा</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- फोटो झूम पॉप-अप (Image Lightbox) -->
+  <div id="imageLightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Feta Zoom">
+    <div id="lightboxCaption"></div>
+  </div>
+
+  <!-- Contact & Footer -->
+  <footer class="footer">
+    <h3 data-i18n="contactTitle">संपर्क केंद्र</h3>
+    <p id="addressText"><i class="fas fa-map-marker-alt"></i> पत्ता: घोडा, ता. कळमनुरी, जि. हिंगोली</p>
+    <p><i class="fas fa-phone"></i> <span data-i18n="phoneLabel">संपर्क:</span> 9766114461 / 9834351247</p>
+    <div class="call-actions" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://wa.me/919766114461?text=नमस्कार,%20मला%20फेटा%20ऑर्डर%20करायचा%20आहे." class="btn-wa">
+        <i class="fab fa-whatsapp"></i> <span data-i18n="waBtn">WhatsApp वर संपर्क करा</span>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Ghoda+Kalamnuri+Hingoli" target="_blank" class="btn-wa" style="background-color: #d32f2f;">
+        <i class="fas fa-location-arrow"></i> <span data-i18n="mapBtn">Google Map वर पत्ता पहा</span>
+      </a>
+    </div>
+    <p class="copy" data-i18n="copy">© २०२६ नंदकुमार फेटेवाले. सर्व हक्क राखीव.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- बुकिंग फॉर्म व फोटो झूम -->
+  <script>
+    function sendBookingToWhatsApp(event) {
+      event.preventDefault();
+      const v = id => document.getElementById(id).value;
+      const msg = "नमस्कार नंदकुमार फेटेवाले,\nमला फेट्याची ऑर्डर/चौकशी करायची आहे:\n\n" +
+        "*नाव:* " + v('custName') + "\n*गाव:* " + v('custVillage') + "\n*तारीख:* " + v('eventDate') +
+        "\n*सेवा:* " + v('serviceType') + "\n*एकूण फेटे:* " + v('fetaQty');
+      window.open("https://wa.me/919766114461?text=" + encodeURIComponent(msg), '_blank');
+    }
+
+    document.addEventListener('click', function (e) {
+      if (e.target && e.target.tagName === 'IMG' && e.target.closest('#productGrid')) {
+        document.getElementById('imageLightbox').style.display = 'flex';
+        document.getElementById('lightboxImg').src = e.target.src;
+        document.getElementById('lightboxCaption').innerText = e.target.alt || '';
+      }
+    });
+
+    function closeLightbox() {
+      document.getElementById('imageLightbox').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -68,15 +68,20 @@
       <input type="text" id="photoName" placeholder="फोटोचे नाव (उदा. shahi-maroon.jpg)">
       <input type="text" id="itemName" placeholder="फेट्याचे नाव (रिकामे ठेवल्यास आपोआप तयार होईल)">
       <input type="text" id="itemPrice" placeholder="किंमत (उदा. ₹५०० / ऑर्डरनुसार)">
+      <select id="itemCategory" style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;font-size:1rem;">
+        <option value="नवरदेव फेटा">नवरदेव फेटा</option>
+        <option value="पुढारी / वऱ्हाडी फेटा">पुढारी / वऱ्हाडी फेटा</option>
+      </select>
       <button onclick="addProduct()">वेबसाइटवर जोडा</button>
     </div>
 
     <hr style="margin: 20px 0;">
 
-    <h3>सध्या वेबसाइटवर असलेले फेटे</h3>
+    <h3>तुम्ही जोडलेले अतिरिक्त फेटे</h3>
+    <p style="font-size:13px;color:#666;">टीप: हे फेटे फक्त याच मोबाईल/ब्राउझरमध्ये दिसतात. सर्व ग्राहकांना दिसण्यासाठी products.json मध्ये जोडा. फोटो images फोल्डरमध्ये असावा.</p>
     <div id="adminItemsList"></div>
 
-    <button onclick="resetDefaults()" style="background: #555; margin-top: 15px;">मूळ फेटे रीसेट करा</button>
+    <button onclick="resetDefaults()" style="background: #555; margin-top: 15px;">जोडलेले फेटे काढा</button>
   </div>
 
   <script>
@@ -99,17 +104,14 @@
       return "शाही फेटा - " + name;
     }
 
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    }
+
     function getProducts() {
       const saved = localStorage.getItem("nk_products");
       if (saved) return JSON.parse(saved);
-      return [
-        { name: "शाही मखमली पगडी (ब्रोच व कलगी)", price: "ऑर्डरनुसार", image: "shahi-maroon.jpg" },
-        { name: "राजेशाही लाल जरी फेटा", price: "ऑर्डरनुसार", image: "shahi-red.jpg" },
-        { name: "नवरदेव स्पेशल पांढरा फेटा", price: "मेकअप व फेटा बांधणीसह", image: "shahi-white.jpg" },
-        { name: "पारंपारिक मावळा पगडी", price: "उत्कृष्ट दर", image: "mavala-bhagwa.jpg" },
-        { name: "शाही पिवळा जरी फेटा", price: "शुभकार्यासाठी", image: "shahi-yellow.jpg" },
-        { name: "नवरदेव शाही फेटा कलेक्शन", price: "विविध रंग उपलब्ध", image: "feta-combo.jpg" }
-      ];
+      return [];
     }
 
     function loadAdminItems() {
@@ -121,8 +123,8 @@
         row.className = "item-row";
         row.innerHTML = `
           <div>
-            <strong>${p.name}</strong><br>
-            <small>किंमत: ${p.price} | फोटो: ${p.image}</small>
+            <strong>${esc(p.name)}</strong><br>
+            <small>किंमत: ${esc(p.price)} | फोटो: ${esc(p.image)}</small>
           </div>
           <button class="del-btn" onclick="deleteItem(${idx})">हटवा</button>
         `;
@@ -145,7 +147,7 @@
       }
 
       const products = getProducts();
-      products.unshift({ name, price, image: photo });
+      products.unshift({ name, price, image: photo, category: document.getElementById("itemCategory").value });
       localStorage.setItem("nk_products", JSON.stringify(products));
 
       document.getElementById("photoName").value = "";
