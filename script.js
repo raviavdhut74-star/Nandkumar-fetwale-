@@ -474,12 +474,13 @@ const WHATSAPP_GROUP_LINK = "";
 const REVIEWS = [];
 
 let searchText = "";
+let userLoc = null; // ग्राहकाचे लोकेशन (Google Maps लिंक)
 
 const i18nExtra = {
-  mr: { searchPlaceholder: "फेटा शोधा (उदा. मरून, पिंक)", noResults: "कोणताही फेटा सापडला नाही", galleryTitle: "फोटो गॅलरी", reviewsTitle: "आमचे ग्राहक काय म्हणतात", groupTitle: "आमच्या WhatsApp ग्रुपमध्ये सामील व्हा", groupBtn: "ग्रुप जॉईन करा", mapTitle: "आमचा पत्ता (नकाशा)", installBtn: "अॅप इन्स्टॉल करा", tagNew: "नवीन", tagPopular: "लोकप्रिय" },
-  hi: { searchPlaceholder: "फेंटा खोजें (जैसे मरून, पिंक)", noResults: "कोई फेंटा नहीं मिला", galleryTitle: "फोटो गैलरी", reviewsTitle: "हमारे ग्राहक क्या कहते हैं", groupTitle: "हमारे WhatsApp ग्रुप से जुड़ें", groupBtn: "ग्रुप जॉइन करें", mapTitle: "हमारा पता (नक्शा)", installBtn: "ऐप इंस्टॉल करें", tagNew: "नया", tagPopular: "लोकप्रिय" },
-  en: { searchPlaceholder: "Search turbans (e.g. maroon, pink)", noResults: "No turban found", galleryTitle: "Photo Gallery", reviewsTitle: "What Our Customers Say", groupTitle: "Join Our WhatsApp Group", groupBtn: "Join Group", mapTitle: "Our Location (Map)", installBtn: "Install App", tagNew: "New", tagPopular: "Popular" },
-  te: { searchPlaceholder: "ఫేటా వెతకండి (ఉదా. మెరూన్, పింక్)", noResults: "ఏ ఫేటా దొరకలేదు", galleryTitle: "ఫోటో గ్యాలరీ", reviewsTitle: "మా కస్టమర్లు ఏమంటున్నారు", groupTitle: "మా WhatsApp గ్రూప్‌లో చేరండి", groupBtn: "గ్రూప్ చేరండి", mapTitle: "మా చిరునామా (మ్యాప్)", installBtn: "యాప్ ఇన్‌స్టాల్ చేయండి", tagNew: "కొత్త", tagPopular: "ప్రసిద్ధ" }
+  mr: { locBtn: "📍 माझे लोकेशन जोडा", locDone: "✅ लोकेशन जोडले (ऑर्डरसोबत जाईल)", locFail: "लोकेशन मिळाले नाही. फोनचे Location चालू करून परवानगी द्या.", locLabel: "माझे लोकेशन", locHint: "ऑर्डर देण्याआधी लोकेशन जोडा, म्हणजे आम्हाला तुमच्या ठिकाणी पोहोचणे सोपे होईल.", searchPlaceholder: "फेटा शोधा (उदा. मरून, पिंक)", noResults: "कोणताही फेटा सापडला नाही", galleryTitle: "फोटो गॅलरी", reviewsTitle: "आमचे ग्राहक काय म्हणतात", groupTitle: "आमच्या WhatsApp ग्रुपमध्ये सामील व्हा", groupBtn: "ग्रुप जॉईन करा", mapTitle: "आमचा पत्ता (नकाशा)", installBtn: "अॅप इन्स्टॉल करा", tagNew: "नवीन", tagPopular: "लोकप्रिय" },
+  hi: { locBtn: "📍 मेरी लोकेशन जोड़ें", locDone: "✅ लोकेशन जुड़ गई (ऑर्डर के साथ जाएगी)", locFail: "लोकेशन नहीं मिली। फोन की Location चालू करके अनुमति दें।", locLabel: "मेरी लोकेशन", locHint: "ऑर्डर से पहले लोकेशन जोड़ें, ताकि हमें आपके स्थान पर पहुंचना आसान हो।", searchPlaceholder: "फेंटा खोजें (जैसे मरून, पिंक)", noResults: "कोई फेंटा नहीं मिला", galleryTitle: "फोटो गैलरी", reviewsTitle: "हमारे ग्राहक क्या कहते हैं", groupTitle: "हमारे WhatsApp ग्रुप से जुड़ें", groupBtn: "ग्रुप जॉइन करें", mapTitle: "हमारा पता (नक्शा)", installBtn: "ऐप इंस्टॉल करें", tagNew: "नया", tagPopular: "लोकप्रिय" },
+  en: { locBtn: "📍 Add my location", locDone: "✅ Location added (sent with your order)", locFail: "Could not get location. Turn on phone Location and allow permission.", locLabel: "My location", locHint: "Add your location before ordering so we can reach you easily.", searchPlaceholder: "Search turbans (e.g. maroon, pink)", noResults: "No turban found", galleryTitle: "Photo Gallery", reviewsTitle: "What Our Customers Say", groupTitle: "Join Our WhatsApp Group", groupBtn: "Join Group", mapTitle: "Our Location (Map)", installBtn: "Install App", tagNew: "New", tagPopular: "Popular" },
+  te: { locBtn: "📍 నా లొకేషన్ జోడించండి", locDone: "✅ లొకేషన్ జోడించబడింది (ఆర్డర్‌తో వెళ్తుంది)", locFail: "లొకేషన్ దొరకలేదు. ఫోన్ Location ఆన్ చేసి అనుమతి ఇవ్వండి.", locLabel: "నా లొకేషన్", locHint: "ఆర్డర్ ఇచ్చే ముందు లొకేషన్ జోడించండి, మేము సులభంగా చేరుకోగలము.", searchPlaceholder: "ఫేటా వెతకండి (ఉదా. మెరూన్, పింక్)", noResults: "ఏ ఫేటా దొరకలేదు", galleryTitle: "ఫోటో గ్యాలరీ", reviewsTitle: "మా కస్టమర్లు ఏమంటున్నారు", groupTitle: "మా WhatsApp గ్రూప్‌లో చేరండి", groupBtn: "గ్రూప్ చేరండి", mapTitle: "మా చిరునామా (మ్యాప్)", installBtn: "యాప్ ఇన్‌స్టాల్ చేయండి", tagNew: "కొత్త", tagPopular: "ప్రసిద్ధ" }
 };
 Object.keys(i18nExtra).forEach(l => Object.assign(i18n[l], i18nExtra[l]));
 
@@ -527,6 +528,7 @@ function buildWaLink(p, t) {
   try {
     msg += t.waPhotoLabel + ": " + new URL(p.image, location.href).href + "\n";
   } catch (e) {}
+  if (userLoc) msg += t.locLabel + ": " + userLoc + "\n";
   msg += t.waFooter;
   return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
 }
@@ -562,6 +564,17 @@ function renderProducts() {
         </a>
       </div>
     </div>`).join("");
+}
+
+function getMyLocation() {
+  const t = i18n[currentLang] || i18n.mr;
+  const setStatus = txt => document.querySelectorAll(".loc-status").forEach(el => el.textContent = txt);
+  if (!navigator.geolocation) { setStatus(t.locFail); return; }
+  navigator.geolocation.getCurrentPosition(pos => {
+    userLoc = "https://www.google.com/maps?q=" + pos.coords.latitude.toFixed(6) + "," + pos.coords.longitude.toFixed(6);
+    setStatus(t.locDone);
+    renderProducts();
+  }, () => setStatus(t.locFail), { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
 }
 
 function searchFetas(value) {
@@ -674,4 +687,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setupGroup();
   loadProducts();
 });
-    
+  
